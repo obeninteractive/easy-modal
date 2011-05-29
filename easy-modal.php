@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Easy Modal
-Plugin URI: http://wordpress.org/#
+Plugin URI: http://wizardinternetsolutions.com/plugins/easy-modal/
 Description: Easy Modal allows you to easily add just about any shortcodes or other content into a modal window. This includes forms such as CF7 and Fast Secure Contact Form.
 Author: Wizard Internet Solutions
-Version: 0.1
+Version: 0.9
 Author URI: http://wizardinternetsolutions.com
 */
 
