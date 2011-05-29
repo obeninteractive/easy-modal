@@ -6,11 +6,13 @@ Requires at least: 3.0.1
 Tested up to: 3.1.3
 Stable tag: trunk
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+This plugin allows you to easily add a Modal window with just about any content. It accepts shortcodes and has been tested to work with Contact Form 7 custom forms using ajax submission.
 
 == Description ==
 
 This plugin allows you to easily add a Modal window with just about any content. It accepts shortcodes and has been tested to work with Contact Form 7 custom forms using ajax submission.
+
+If you like the plugin please rate it.
 
 
 [easyModal Page](http://wizardinternetsolutions.com/plugins/easy-modal/ "easyModal Page - Info, Demo and Discussion") - Info, Demo and Discussion
