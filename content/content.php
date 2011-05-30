@@ -1,8 +1,14 @@
 <?php
-/*
-* Easy Modal
-* http://wizardinternetsolutions.com/project/easy-modal/
-*/
+ /*
+ * Easy Modal
+ * http://wizardinternetsolutions.com/project/easy-modal/
+ * 
+ * Copyright (c) 2011 Wizard Internet Solutions 
+ * http://wizardinternetsolutions.com
+ *
+ * Licensed under the MIT license:
+ *   http://www.opensource.org/licenses/mit-license.php
+ */
 
     require( '../../../../wp-load.php' );
 	global $eM;
