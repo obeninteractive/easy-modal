@@ -1,0 +1,18 @@
+/*
+ * Easy Modal
+ * http://wizardinternetsolutions.com/project/easy-modal/
+ * 
+ * Copyright (c) 2011 Wizard Internet Solutions 
+ * http://wizardinternetsolutions.com
+ *
+ * Licensed under the MIT license:
+ *   http://www.opensource.org/licenses/mit-license.php
+ */
+
+/* Overlay */
+#eM-overlay {background-color:#000; cursor:wait;}
+
+/* Container */
+#eM-container {font: 16px/22px 'Trebuchet MS', Verdana, Arial; text-align:left; width:450px;}
+.eM-content {background-color:#333; color:#ddd;}
+.eM-title {color:#d76300; font-size:20px; line-height:20px; margin:0; padding:0 0 6px 12px; text-align:left;}
