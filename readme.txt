@@ -15,7 +15,7 @@ This plugin allows you to easily add a Modal window with just about any content.
 If you like the plugin please rate it.
 
 
-[easyModal Page](http://wizardinternetsolutions.com/plugins/easy-modal/ "easyModal Page - Info, Demo and Discussion") - Info, Demo and Discussion
+[easyModal Page](http://wizardinternetsolutions.com/plugins/easy-modal/ "easyModal Page - Info, Demo and Discussion") - Info, Demo and Feature Discussion
 
 [Wizard Internet Solutions](http://wizardinternetsolutions.com/ "Website Design & Development") - Developers Site
 
