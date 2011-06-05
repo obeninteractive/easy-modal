@@ -24,6 +24,7 @@ If you like the plugin please rate it.
 1. Upload `easy-Modal` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Add `eModal` class to the object you want to make activate the modal window. Will work on divs, links, list elements and just about anything else.
+4. You will also need to add a minimum height and width in the settings. This will be fixed shortly.
 
 == Frequently Asked Questions ==
 
