@@ -10,7 +10,7 @@ Description: Easy Modal allows you to easily add just about any shortcodes or ot
 
 Author: Wizard Internet Solutions
 
-Version: 0.9.0.2
+Version: 0.9.0.3
 
 Author URI: http://wizardinternetsolutions.com
 
