@@ -195,7 +195,7 @@ class easy_modal {
 					
 				} else {
 					
-					$eM_Options['maxHeight'] = '50%';
+					$eM_Options['maxHeight'] = '75%';
 					
 				}
 				
@@ -210,7 +210,7 @@ class easy_modal {
 					
 				} else {
 					
-					$eM_Options['minWidth'] = '50%';
+					$eM_Options['minWidth'] = '30%';
 					
 				}
 				
