@@ -28,6 +28,10 @@ If you like the plugin please rate it.
 
 == Frequently Asked Questions ==
 
+= The screen changes but my modal never shows. =
+
+This is usually because the width and height are not set. Try checking the settings page in the admin area to see if there is a minimum width and height.
+
 = Does this work with CF7 =
 
 Yes, this will work with any custom form shortcode and uses ajax submit features.
