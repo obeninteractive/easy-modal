@@ -173,26 +173,62 @@ class easy_modal {
 			}
 		
 			if (isset($_POST['eM_minHeight'])) {
-
-				$eM_Options['minHeight'] = $_POST['eM_minHeight'];
+				
+				if(($_POST['eM_minHeight']!='')){
+				
+					$eM_Options['minHeight'] = $_POST['eM_minHeight'];
+					
+				} else {
+					
+					$eM_Options['minHeight'] = '50%';
+					
+				}
+				
 
 			}
 
 			if (isset($_POST['eM_maxHeight'])) {
-
-				$eM_Options['maxHeight'] = $_POST['eM_maxHeight'];
+				
+				if(($_POST['eM_maxHeight']!='')){
+				
+					$eM_Options['maxHeight'] = $_POST['eM_maxHeight'];
+					
+				} else {
+					
+					$eM_Options['maxHeight'] = '50%';
+					
+				}
+				
 
 			}
 
 			if (isset($_POST['eM_minWidth'])) {
-
-				$eM_Options['minWidth'] = $_POST['eM_minWidth'];
+				
+				if(($_POST['eM_minWidth']!='')){
+				
+					$eM_Options['minWidth'] = $_POST['eM_minWidth'];
+					
+				} else {
+					
+					$eM_Options['minWidth'] = '50%';
+					
+				}
+				
 
 			}
 
 			if (isset($_POST['eM_maxWidth'])) {
-
-				$eM_Options['maxWidth'] = $_POST['eM_maxWidth'];
+				
+				if(($_POST['eM_maxWidth']!='')){
+				
+					$eM_Options['maxWidth'] = $_POST['eM_maxWidth'];
+					
+				} else {
+					
+					$eM_Options['maxWidth'] = '50%';
+					
+				}
+				
 
 			}
 
