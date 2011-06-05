@@ -36,13 +36,13 @@ class easy_modal {
 		
 			'positionY' => '',
 
-			'minHeight' => '',
+			'minHeight' => '50%',
 
-			'maxHeight' => '',
+			'maxHeight' => '75%',
 
-			'minWidth' => '',
+			'minWidth' => '50%',
 
-			'maxWidth' => '',
+			'maxWidth' => '75%',
 
 			'cf7form' => false,
 
