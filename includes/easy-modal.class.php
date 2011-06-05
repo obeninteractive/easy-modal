@@ -303,7 +303,7 @@ class easy_modal {
                                 <h4><label for="colorSelector"><?php _e('Overlay Color', 'easy-modal');?><span class="desc"><?php _e('Choose the overlay color.','easy-modal')?></span></label></h4>
                                 <input type="hidden" name="eM_overlayColor" value="<?php echo $eM_Options['overlayColor']?>" />                      
                                 <div id="colorSelector" style="height:28px;position:relative;width:28px;">
-                                    <div style="background: url('<?php echo WP_PLUGIN_URL.'/'.str_replace(basename( __FILE__),"",plugin_basename(__FILE__)) ?>images/admin/color_selector.png') no-repeat center center transparent;background-color:<?php echo $eM_Options['overlayColor']?>;height: 28px;width: 28px;"></div>
+                                    <div style="background: url('<?php echo WP_PLUGIN_URL.'/' ?>easy-modal/images/admin/color_selector.png') no-repeat center center transparent;background-color:<?php echo $eM_Options['overlayColor']?>;height: 28px;width: 28px;"></div>
                                 </div>
                                 <script type="text/javascript">
                                     jQuery(document).ready(function() {
