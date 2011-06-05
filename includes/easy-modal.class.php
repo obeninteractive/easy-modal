@@ -40,9 +40,9 @@ class easy_modal {
 
 			'maxHeight' => '75%',
 
-			'minWidth' => '50%',
+			'minWidth' => '30%',
 
-			'maxWidth' => '75%',
+			'maxWidth' => '50%',
 
 			'cf7form' => false,
 
