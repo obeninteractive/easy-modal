@@ -42,7 +42,8 @@ We have only included some basic styling for the modal at this point. We will be
 
 == Screenshots ==
 
-1. easy-Modal Example used on our site.
+1. Easy Modal with default "Contact Fom 7" form.
+2. Shows CF7 Inline validation used during ajax submit
 
 == Changelog ==
 
