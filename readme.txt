@@ -8,11 +8,13 @@ Stable tag: 0.9.0.3
 
 This plugin allows you to easily add a Modal window with just about any content. It accepts shortcodes and has been tested to work with Contact Form 7 custom forms using ajax submission.
 
-v0.9.0.4 comes with a basic theme to style default CF7 Form. See Screenshots.
+
 
 == Description ==
 
 This plugin allows you to easily add a Modal window with just about any content. It accepts shortcodes and has been tested to work with Contact Form 7 custom forms using ajax submission.
+
+v0.9.0.4 comes with a basic theme to style default CF7 Form. See Screenshots.
 
 If you like the plugin please rate it.
 
@@ -49,7 +51,8 @@ We have only included some basic styling for the modal at this point. We will be
 
 == Changelog ==
 
-= 0.9.0.3 =* Overlay Click to Close Option
+= 0.9.0.3 =
+* Overlay Click to Close Option
 * Auto Position Option
 * Position Top Option
 * Position Left Option
