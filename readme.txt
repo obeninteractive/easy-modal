@@ -8,6 +8,8 @@ Stable tag: 0.9.0.3
 
 This plugin allows you to easily add a Modal window with just about any content. It accepts shortcodes and has been tested to work with Contact Form 7 custom forms using ajax submission.
 
+v0.9.0.4 comes with a basic theme to style default CF7 Form. See Screenshots.
+
 == Description ==
 
 This plugin allows you to easily add a Modal window with just about any content. It accepts shortcodes and has been tested to work with Contact Form 7 custom forms using ajax submission.
@@ -42,7 +44,8 @@ We have only included some basic styling for the modal at this point. We will be
 
 == Screenshots ==
 
-1. easy-Modal Example used on our site.
+1. Easy Modal with default "Contact Fom 7" form.
+2. Shows CF7 Inline validation used during ajax submit
 
 == Changelog ==
 
