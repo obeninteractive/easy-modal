@@ -24,7 +24,7 @@ If you like the plugin please rate it.
 
 [Wizard Internet Solutions](http://wizardinternetsolutions.com/ "Website Design & Development") - Developers Site
 
-To be notified of plugin updates, [follow us on Twitter](http://wizardinternetsolutions.com/ "Wizard Internet Solutions on Twitter")!
+To be notified of plugin updates, [follow us on Twitter](http://twitter.com/wizard_is "Wizard Internet Solutions on Twitter")!
 
 == Installation ==
 
