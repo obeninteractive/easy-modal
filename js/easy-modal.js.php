@@ -166,7 +166,7 @@ eM_maxWidth = convertEntities(eMSettings.maxWidth);eM_cf7form = convertEntities(
 					});
 				});
 			});
-		},
+		}
 	};
 	contact.init();
 });
