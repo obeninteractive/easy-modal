@@ -24,6 +24,8 @@ If you like the plugin please rate it.
 
 [Wizard Internet Solutions](http://wizardinternetsolutions.com/ "Website Design & Development") - Developers Site
 
+To be notified of plugin updates, [follow us on Twitter](http://wizardinternetsolutions.com/ "Wizard Internet Solutions on Twitter")!
+
 == Installation ==
 
 1. Upload `Easy-Modal` folder to the `/wp-content/plugins/` directory
