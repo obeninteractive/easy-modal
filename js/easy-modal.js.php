@@ -2,24 +2,28 @@
 /*
 * Easy Modal
 * http://wizardinternetsolutions.com/project/easy-modal/
-* v 0.9.0.4
+* v 0.9.0.6
 */
 header("content-type: application/x-javascript");
-echo <<<JS
-eM_plugin_url = convertEntities(eMSettings.plugin_url);
-eM_overlayId = convertEntities(eMSettings.overlayId);
-eM_overlayColor = convertEntities(eMSettings.overlayColor);
-eM_opacity = convertEntities(eMSettings.opacity);
-eM_overlayClose = convertEntities(eMSettings.overlayClose);
-eM_containerId = convertEntities(eMSettings.containerId);
-eM_autoResize = convertEntities(eMSettings.autoResize);
-eM_autoPosition = convertEntities(eMSettings.autoPosition);
-eM_positionX = convertEntities(eMSettings.positionX);
-eM_positionY = convertEntities(eMSettings.positionY);
-eM_minHeight = convertEntities(eMSettings.minHeight);
-eM_maxHeight = convertEntities(eMSettings.maxHeight);
-eM_minWidth = convertEntities(eMSettings.minWidth);
-eM_maxWidth = convertEntities(eMSettings.maxWidth);eM_cf7form = convertEntities(eMSettings.cf7form);jQuery(function ($) {
+require('../../../../wp-load.php');
+$opt = get_option('easy_modalOptions');
+?>
+eM_plugin_url = "<?php echo $opt['plugin_url']?>";
+eM_overlayId = "<?php echo $opt['overlayId']?>";
+eM_overlayColor = "<?php echo $opt['overlayColor']?>";
+eM_opacity = "<?php echo $opt['opacity']?>";
+eM_overlayClose = "<?php echo $opt['overlayClose']?>";
+eM_containerId = "<?php echo $opt['containerId']?>";
+eM_autoResize = "<?php echo $opt['autoResize']?>";
+eM_autoPosition = "<?php echo $opt['autoPosition']?>";
+eM_positionX = "<?php echo $opt['positionX']?>";
+eM_positionY = "<?php echo $opt['positionY']?>";
+eM_minHeight = "<?php echo $opt['minHeight']?>";
+eM_maxHeight = "<?php echo $opt['maxHeight']?>";
+eM_minWidth = "<?php echo $opt['minWidth']?>";
+eM_maxWidth = "<?php echo $opt['maxWidth']?>";
+eM_cf7form = "<?php echo $opt['cf7form']?>";
+jQuery(function ($) {
 	var contact = {
 		message: null,
 		init: function () {
@@ -170,5 +174,3 @@ eM_maxWidth = convertEntities(eMSettings.maxWidth);eM_cf7form = convertEntities(
 	};
 	contact.init();
 });
-JS;
-?>

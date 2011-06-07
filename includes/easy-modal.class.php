@@ -2,7 +2,7 @@
 /*
 * Easy Modal
 * http://wizardinternetsolutions.com/project/easy-modal/
-* v 0.9.0.4
+* v 0.9.0.6
 */
 global $wp, $cur_ver;
 if ( ! function_exists( 'get_plugin_data' ) )
