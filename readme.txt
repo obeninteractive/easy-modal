@@ -4,7 +4,7 @@ Donate link: http://wizardinternetsolutions.com/
 Tags: modal, contact form 7, ajax
 Requires at least: 3.0.1
 Tested up to: 3.1.3
-Stable tag: 0.9.0.6
+Stable tag: 0.9.0.7
 
 This plugin allows you to easily add a Modal window with just about any content. It accepts shortcodes and has been tested to work with Contact Form 7 custom forms using ajax submission.
 
@@ -52,6 +52,9 @@ We have only included some basic styling for the modal at this point. We will be
 2. Shows CF7 Inline validation used during ajax submit
 
 == Changelog ==
+
+= 0.9.0.7 =
+* Bug Fix in JS (Affected Loading of Content to modal)
 
 = 0.9.0.6 =
 * Bug Fix in JS (Affected WordPress versions below 3.1)

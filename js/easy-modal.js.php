@@ -2,13 +2,11 @@
 /*
 * Easy Modal
 * http://wizardinternetsolutions.com/project/easy-modal/
-* v 0.9.0.6
 */
 header("content-type: application/x-javascript");
 require('../../../../wp-load.php');
 $opt = get_option('easy_modalOptions');
 ?>
-eM_plugin_url = "<?php echo $opt['plugin_url']?>";
 eM_overlayId = "<?php echo $opt['overlayId']?>";
 eM_overlayColor = "<?php echo $opt['overlayColor']?>";
 eM_opacity = "<?php echo $opt['opacity']?>";
@@ -30,7 +28,7 @@ jQuery(function ($) {
 			$('.eModal').click(function (e) {
 				e.preventDefault();
 				// load the contact form using ajax
-				$.get("/wp-content/plugins/easy-modal/content/content.php?plugin_url=" + eM_plugin_url, function(data){
+				$.get("/wp-content/plugins/easy-modal/content/content.php, function(data){
 					// create a modal dialog with the data
 					$(data).modal({
 						closeHTML: "<a href='#' title='Close' class='modal-close'></a>",
