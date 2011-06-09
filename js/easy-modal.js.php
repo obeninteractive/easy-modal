@@ -2,6 +2,7 @@
 /*
 * Easy Modal
 * http://wizardinternetsolutions.com/project/easy-modal/
+* v 0.9.0.6
 */
 header("content-type: application/x-javascript");
 require('../../../../wp-load.php');
@@ -28,7 +29,7 @@ jQuery(function ($) {
 			$('.eModal').click(function (e) {
 				e.preventDefault();
 				// load the contact form using ajax
-				$.get("/wp-content/plugins/easy-modal/content/content.php, function(data){
+				$.get("<?php echo get_bloginfo('wpurl')?>/wp-content/plugins/easy-modal/content/content.php", function(data){
 					// create a modal dialog with the data
 					$(data).modal({
 						closeHTML: "<a href='#' title='Close' class='modal-close'></a>",
