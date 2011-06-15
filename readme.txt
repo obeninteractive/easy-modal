@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Easy Modal ===
 Contributors: danieliser
 Donate link: http://wizardinternetsolutions.com/
 Tags: modal, contact form 7, ajax
