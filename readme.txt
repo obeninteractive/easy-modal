@@ -6,7 +6,7 @@ Requires at least: 3.0.1
 Tested up to: 3.1.3
 Stable tag: 0.9.0.8
 
-This plugin allows you to easily add a Modal window with just about any content. It accepts shortcodes and has been tested to work with Contact Form 7 custom forms using ajax submission.
+This plugin allows you to easily add a Modal window with just about any content including Contact Form 7 using ajax submission.
 
 == Description ==
 
