@@ -21,7 +21,9 @@ v0.9.0.4 comes with a basic theme to style default CF7 Form. See Screenshots.
 If you like the plugin please rate it.
 
 [Easy Modal Page](http://wizardinternetsolutions.com/plugins/easy-modal/ "Easy Modal Page - Info, Demo and Discussion") - Info, Demo and Feature Discussion
+
 [Wizard Internet Solutions](http://wizardinternetsolutions.com/ "Website Design & Development") - Developers Site
+
 To be notified of plugin updates, [follow us on Twitter](http://twitter.com/wizard_is "Wizard Internet Solutions on Twitter")!
 
 == Installation ==
