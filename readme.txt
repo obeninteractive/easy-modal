@@ -4,7 +4,7 @@ Donate link: http://wizardinternetsolutions.com/
 Tags: modal, contact form 7, ajax
 Requires at least: 3.0.1
 Tested up to: 3.1.3
-Stable tag: trunk
+Stable tag: 0.9
 
 This plugin allows you to easily add a Modal window with just about any content. It accepts shortcodes and has been tested to work with Contact Form 7 custom forms using ajax submission.
 
@@ -15,9 +15,11 @@ This plugin allows you to easily add a Modal window with just about any content.
 If you like the plugin please rate it.
 
 
-[easyModal Page](http://wizardinternetsolutions.com/plugins/easy-modal/ "easyModal Page - Info, Demo and Discussion") - Info, Demo and Discussion
+[Easy Modal Page](http://wizardinternetsolutions.com/plugins/easy-modal/ "Easy Modal Page - Info, Demo and Discussion") - Info, Demo and Feature Discussion
 
 [Wizard Internet Solutions](http://wizardinternetsolutions.com/ "Website Design & Development") - Developers Site
+
+To be notified of plugin updates, [follow us on Twitter](http://twitter.com/wizard_is "Wizard Internet Solutions on Twitter")!
 
 == Installation ==
 
