@@ -4,7 +4,7 @@ Donate link: http://wizardinternetsolutions.com/
 Tags: modal, contact form 7, ajax
 Requires at least: 3.0.1
 Tested up to: 3.1.3
-Stable tag: 0.9.0.8
+Stable tag: 0.9.0.9
 
 This plugin allows you to easily add a Modal window with just about any content including Contact Form 7 using ajax submission.
 
@@ -16,9 +16,9 @@ Basic theme for Contact Form 7 default form. Will be adding theme options in fut
 
 For feature requests please visit our Easy Modal page at the link below
 
-v0.9.0.4 comes with a basic theme to style default CF7 Form. See Screenshots.
-
 If you like the plugin please rate it.
+
+[youtube http://www.youtube.com/watch?v=w9Us4ttVuZU]
 
 [Easy Modal Page](http://wizardinternetsolutions.com/plugins/easy-modal/ "Easy Modal Page - Info, Demo and Discussion") - Info, Demo and Feature Discussion
 
@@ -27,6 +27,8 @@ If you like the plugin please rate it.
 To be notified of plugin updates, [follow us on Twitter](http://twitter.com/wizard_is "Wizard Internet Solutions on Twitter")!
 
 == Installation ==
+
+[youtube http://www.youtube.com/watch?v=w9Us4ttVuZU]
 
 1. Upload `Easy-Modal` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
@@ -52,6 +54,9 @@ We have only included some basic styling for the modal at this point. We will be
 2. Shows CF7 Inline validation used during ajax submit
 
 == Changelog ==
+
+= 0.9.0.9 =
+* Bug Fix in CSS Fixes Form scrolling.
 
 = 0.9.0.8 =
 * Bug Fix in JS (Missing " fixed)
