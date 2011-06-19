@@ -16,9 +16,9 @@ Basic theme for Contact Form 7 default form. Will be adding theme options in fut
 
 For feature requests please visit our Easy Modal page at the link below
 
-If you like the plugin please rate it.
-
 [youtube http://www.youtube.com/watch?v=w9Us4ttVuZU]
+
+If you like the plugin please rate it.
 
 [Easy Modal Page](http://wizardinternetsolutions.com/plugins/easy-modal/ "Easy Modal Page - Info, Demo and Discussion") - Info, Demo and Feature Discussion
 
