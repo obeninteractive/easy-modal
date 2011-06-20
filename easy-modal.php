@@ -4,7 +4,7 @@ Plugin Name: Easy Modal
 Plugin URI: http://wizardinternetsolutions.com/plugins/easy-modal/
 Description: Easy Modal allows you to easily add just about any shortcodes or other content into a modal window. This includes forms such as CF7.
 Author: Wizard Internet Solutions
-Version: 0.9.0.10
+Version: 0.9.0.11
 Author URI: http://wizardinternetsolutions.com
 */
 $pluginDIR = PLUGINDIR.'/'. dirname( plugin_basename(__FILE__));
@@ -24,6 +24,7 @@ function easy_modal_styles()
 		wp_enqueue_style('easy-modal-theme', $em_plugin_url.'/themes/default/styles.css');
 	} else {
 		wp_enqueue_style('easy-modal-admin-style', $em_plugin_url.'/css/easy-modal-admin.css');
+		wp_enqueue_style('jquery-colorpicker', $em_plugin_url.'/css/colorpicker.css');
 	}
 }
 add_action('wp_print_scripts', 'easy_modal_scripts');
@@ -34,11 +35,11 @@ function easy_modal_scripts(){
 	if (!is_admin())	{
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('jquery-form', array('jquery'));
-		wp_enqueue_script('jquery-simplemodal', $em_plugin_url.'/js/jquery.simplemodal.js', array('jquery'));
+		wp_enqueue_script('jquery-simplemodal', $em_plugin_url.'/js/jquery.simplemodal.js');
 		//wp_enqueue_script('easy-modal-script', $em_plugin_url.'/js/easy-modal.js', array('jquery','jquery-simplemodal'));
 		wp_enqueue_script('easy-modal-script', $em_plugin_url.'/js/easy-modal.js.php', array('jquery','jquery-simplemodal'));
 	} else {
-		//wp_enqueue_script( 'farbtastic' );
+		wp_enqueue_script('jquery-colorpicker', $em_plugin_url.'/js/colorpicker.js',  array('jquery'));
 	}
 }
 //Initialize the admin panel
