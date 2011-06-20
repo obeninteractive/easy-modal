@@ -1,6 +1,6 @@
 === Easy Modal ===
 Contributors: danieliser
-Donate link: http://wizardinternetsolutions.com/
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PQTG2JYUKSLFW
 Tags: modal, contact form 7, ajax
 Requires at least: 3.0.1
 Tested up to: 3.1.3
