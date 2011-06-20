@@ -55,6 +55,9 @@ We have only included some basic styling for the modal at this point. We will be
 
 == Changelog ==
 
+= 0.9.0.10 =
+* Bug Fix in CSS Fixes Form scrolling only when needed.
+
 = 0.9.0.9 =
 * Bug Fix in CSS Fixes Form scrolling.
 
