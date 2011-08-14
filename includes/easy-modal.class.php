@@ -91,6 +91,7 @@ class easy_modal {
 		global $cur_ver;
 		// Erase Settings For versions older than 0.9.0.4
 		if(!get_option('eM_version')) $overwrite = true;
+		if(version_compare(get_option('eM_version'),$cur_ver, '<')) $overwrite = true;
 		if($overwrite == true) $this->resetAdminOptions();
 		update_option('eM_version', $cur_ver);
 		$this->getAdminOptions($cur_ver);
