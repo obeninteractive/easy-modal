@@ -188,7 +188,7 @@ class easy_modal {
 						foreach($modals as $key => $modal){
 							$tabs .= '<li><a href="#eModal-'.$modal.'">eModal-'.$modal.'</a></li>';
                             $panels .= $this->display_emodal_option($modal,false);
-							if(intval($modal) > $count) $count = intval($modal)+1;
+							if(intval($modal) > $count) $count = intval($modal);
                         }
                     ?>
                 	<button id="addModal">Add New Modal</button>
