@@ -79,6 +79,13 @@ return'"'+string+'"';};var _escapeable=/["\\\x00-\x1f\x7f-\x9f]/g;var _meta={'\b
 					centerModal(true);
 				}, 100)
 			});
+			$(window).scroll(function(){
+				clearTimeout(resizeTimer);
+				resizeTimer = setTimeout(function(){
+					centerModal(true);
+				}, 100)
+			});
+			
 			$(this).fadeIn();
 			centerModal();
 			
