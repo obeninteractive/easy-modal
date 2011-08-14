@@ -14,13 +14,13 @@ This plugin allows you to easily add unlimited Modal windows with just about any
 
 Basic theme for Contact Form 7 default form.
 
-For feature requests please visit our Easy Modal page at the link below
+For examples please visit our Easy Modal page at the link below
 
 [youtube http://www.youtube.com/watch?v=w9Us4ttVuZU]
 
 If you like the plugin please rate it.
 
-[Easy Modal Page](http://wizardinternetsolutions.com/plugins/easy-modal/ "Easy Modal Page - Info, Demo and Discussion") - Info, Demo and Feature Discussion
+[Easy Modal Page](http://wizardinternetsolutions.com/plugins/easy-modal/ "Easy Modal Page - Info, Demos and Discussion") - Info, Demos and Feature Discussion
 
 [Wizard Internet Solutions](http://wizardinternetsolutions.com/ "Website Design & Development") - Developers Site
 
