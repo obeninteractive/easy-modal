@@ -14,7 +14,19 @@ $plugininfo=get_plugin_data($pluginFILE);
 $cur_ver = $plugininfo['Version'];
 
 class easy_modal {
-	var $adminOptionsName = "easy_modalOptions";
+	var $adminOptionsName = "EasyModal";
+	
+	function easy_modal(){
+	// Install & Uninstall Routines
+		register_activation_hook(__FILE__, array(&$this, 'install'));
+		register_deactivation_hook(__FILE__, array(&$this, 'uninstall'));
+	}
+	function install(){
+		$this->resetAdminOptions();
+	}
+	function uninstall(){
+		
+	}
 	//Returns an array of admin options
 	function defaultModalOptions(){
 		$settings = array(
