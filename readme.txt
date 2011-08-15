@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: modal, contact form 7, ajax
 Requires at least: 3.0.1
 Tested up to: 3.2.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 
 This plugin allows you to easily add a Modal window with just about any content including Contact Form 7 using ajax submission.
 
@@ -63,6 +63,9 @@ We have only included some basic styling for the modal at this point. You can ad
 2. Shows CF7 Inline validation used during ajax submit
 
 == Changelog ==
+
+= 1.0.1 =
+* Fix for installation glitch.
 
 = 1.0.0 =
 * Release v1.0.0 Is a was rebuilt from the ground up. Features Include:
