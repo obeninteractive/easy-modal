@@ -16,7 +16,7 @@ $cur_ver = $plugininfo['Version'];
 class easy_modal {
 	var $adminOptionsName = "easy_modalOptions";
 	//Returns an array of admin options
-	function defaultAdminOptions(){
+	function defaultModalOptions(){
 		$settings = array(
 			'title' => '',
 			'content' => '',
@@ -36,7 +36,7 @@ class easy_modal {
 	
 	
 	function getAdminOptions($modalId){
-		$settings = $this->defaultAdminOptions();
+		$settings = $this->defaultModalOptions();
 		$eMOptions = get_option($this->adminOptionsName.'_'.$modalId);
 		if (!is_array($eMOptions)) {
 			$eMOptions = unserialize($eMOptions);
@@ -62,7 +62,7 @@ class easy_modal {
 		$modals = $this->getModalList();
 		$modals = array_merge($modals,array($modalId));
 		update_option($this->adminOptionsName, serialize($modals));
-		$settings = $this->defaultAdminOptions();
+		$settings = $this->defaultModalOptions();
 		update_option($this->adminOptionsName.'_'.$modalId, serialize($settings));
 	}
 	
@@ -82,10 +82,9 @@ class easy_modal {
 		return $settings;
 	}
 	
-	function resetAdminOptions($modalId) {
-
+	function resetAdminOptions() {
 		update_option($this->adminOptionsName, serialize(array('1')));
-		update_option($this->adminOptionsName.'_'.$modalId, serialize($this->defaultAdminOptions()));
+		update_option($this->adminOptionsName.'_1', serialize($this->defaultModalOptions()));
 	}
 	// Plugin Initialization
 	function init() {
@@ -93,14 +92,14 @@ class easy_modal {
 		// Erase Settings For versions older than 0.9.0.4
 		if(!get_option('eM_version')) $overwrite = true;
 		if(version_compare(get_option('eM_version'),$cur_ver, '<')) $overwrite = true;
-		if($cur_ver == '1.0.1' || $cur_ver == '1.0.0') $overwrite = true;
+		if($cur_ver == '1.0.2' || $cur_ver == '1.0.1' || $cur_ver == '1.0.0') $overwrite = true;
 		if($overwrite == true) $this->resetAdminOptions();
 		update_option('eM_version', $cur_ver);
 	}
 	//Prints out the admin page
 	function display_emodal_option($modalId, $new = true){
     	if($new == true){
-			$settings = $this->defaultAdminOptions();
+			$settings = $this->defaultModalOptions();
 			$this->addNewModal($modalId);
 		} else {
 			$settings = $this->getAdminOptions($modalId);
