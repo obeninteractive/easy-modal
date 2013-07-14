@@ -4,7 +4,7 @@ Plugin Name: Easy Modal
 Plugin URI: http://wizardinternetsolutions.com/plugins/easy-modal/
 Description: Easy Modal allows you to easily add just about any shortcodes or other content into a modal window. This includes forms such as CF7.
 Author: Wizard Internet Solutions
-Version: 1.1.9
+Version: 1.1.9.1
 Author URI: http://wizardinternetsolutions.com
 */
 if (is_admin() && ! function_exists( 'get_plugin_data' ) )
@@ -28,6 +28,7 @@ class Easy_Modal {
 	var $api_url = 'http://wizardinternetsolutions.com/api/';
 	public function __construct()
 	{
+		$this->_migrate();
 		$this->Plugin['file'] = __FILE__;
 		$this->Plugin['dir'] = PLUGINDIR.'/'. dirname( plugin_basename(__FILE__));
 		$this->Plugin['url'] = trailingslashit  (get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
@@ -76,6 +77,30 @@ class Easy_Modal {
 		{
 			add_action('wp_print_styles', array(&$this, '_styles') );
 			add_action('wp_print_scripts', array(&$this, '_scripts') );
+		}
+	}
+	private function _migrate()
+	{
+		global $wp;
+		if(!get_option('EasyModal_Version'))
+		{
+			$this->resetOptions();
+		}
+		update_option('EasyModal_Version', $this->Plugin['info']['Version']);
+		// detect EM Free
+		if(get_option('eM_version'))
+		{
+			$this->_migrate_EM();
+		}
+		// detect EM Lite
+		if(get_option('EasyModalLite_Version'))
+		{
+			$this->_migrate_EM_Lite();
+		}
+		// detect EM Lite
+		if(get_option('EasyModalPro_Version'))
+		{
+			$this->_migrate_EM_Pro();
 		}
 	}
 	private function _migrate_EM()
@@ -187,27 +212,7 @@ class Easy_Modal {
 	}
 	public function _activation()
 	{
-		global $wp;
-		if(!get_option('EasyModal_Version'))
-		{
-			$this->resetOptions();
-		}
-		update_option('EasyModal_Version', $this->Plugin['info']['Version']);
-		// detect EM Free
-		if(get_option('eM_version'))
-		{
-			$this->_migrate_EM();
-		}
-		// detect EM Lite
-		if(get_option('EasyModalLite_Version'))
-		{
-			$this->_migrate_EM_Lite();
-		}
-		// detect EM Lite
-		if(get_option('EasyModalPro_Version'))
-		{
-			$this->_migrate_EM_Pro();
-		}
+		$this->_migrate();
 	}
 	public function _wpmu_activation($blog_id, $user_id, $domain, $path, $site_id, $meta)
 	{
