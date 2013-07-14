@@ -1,0 +1,12 @@
+#eModal-Overlay{background:#000 url(../images/loader.gif) no-repeat scroll center center;height:100%;left:0;position:fixed;top:0;width:100%;z-index:100000}
+#eModal-Container{max-height:90%;max-width:90%;position:absolute;z-index:100001}
+#eModal-Container #eModal-Title{font-size:20px;line-height:20px;margin:0 5px 5px;text-align:left}
+#eModal-Container #eModal-Content{overflow-x:hidden;overflow-y:auto}
+#eModal-Container img{max-height:100%;width:auto}
+#eModal-Close{font-family:sans-serif;cursor:pointer;display:block;font-size:20px;font-weight:700;line-height:16px;position:absolute;text-align:center;text-decoration:none;vertical-align:middle}
+#eModal-Buttons{bottom:20px;height:30px;left:-30px;position:absolute;right:-30px}
+#eModal-Previous{background:#fff;height:30px;left:0;position:absolute;width:30px}
+#eModal-Next{background:#fff;height:30px;position:absolute;right:0;width:30px}
+#eModal-Content p{margin:0}
+* html #eModal-Overlay{position:absolute;height:expression(document.body.scrollHeight>document.body.offsetHeight ? document.body.scrollHeight:document.body.offsetHeight 'px')}
+#eModal-Container .poweredby{margin:5px 20px 0;font-size:.75em;display:block}
