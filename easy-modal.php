@@ -4,7 +4,7 @@ Plugin Name: Easy Modal
 Plugin URI: http://wizardinternetsolutions.com/plugins/easy-modal/
 Description: Easy Modal allows you to easily add just about any shortcodes or other content into a modal window. This includes forms such as CF7.
 Author: Wizard Internet Solutions
-Version: 1.1.9.4
+Version: 1.1.9.5
 Author URI: http://wizardinternetsolutions.com
 */
 if (is_admin() && ! function_exists( 'get_plugin_data' ) )
@@ -32,7 +32,7 @@ class Easy_Modal {
 		$this->Plugin['dir'] = PLUGINDIR.'/'. dirname( plugin_basename(__FILE__));
 		$this->Plugin['url'] = trailingslashit  (get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
 		
-		$this->_migrate();
+		add_action('admin_init', array(&$this,'_migrate'));
 		
 		// Add WPMU Support
 		// Add default options on new site creation.
@@ -197,7 +197,6 @@ class Easy_Modal {
 			$this->resetOptions();
 		}
 		update_option('EasyModal_Version', $this->Plugin['info']['Version']);
-		$this->_migrate();
 	}
 	public function _migrate()
 	{
@@ -227,21 +226,6 @@ class Easy_Modal {
 			$this->resetOptions();
 		}
 		update_option('EasyModal_Version', $this->Plugin['info']['Version']);
-		// detect EM Free
-		if(get_option('eM_version'))
-		{
-			$this->_migrate_EM();
-		}
-		// detect EM Lite
-		if(get_option('EasyModalLite_Version'))
-		{
-			$this->_migrate_EM_Lite();
-		}
-		// detect EM Lite
-		if(get_option('EasyModalPro_Version'))
-		{
-			$this->_migrate_EM_Pro();
-		}
 		restore_current_blog();
 	}
 	public function resetOptions()
@@ -272,7 +256,9 @@ class Easy_Modal {
 		{
 			wp_enqueue_style($this->Plugin['slug'].'-admin-styles', $this->Plugin['url'].'/inc/css/admin-styles.min.css');
 		}
+
 	}
+
 	public function _scripts()
 	{
 		wp_enqueue_script('jquery');
@@ -392,6 +378,7 @@ class Easy_Modal {
 			if (isset($autoOpen))
 			{
 				$settings['autoOpen'] = $autoOpen;
+
 			}
 			else
 			{
@@ -565,6 +552,7 @@ class Easy_Modal {
 	}
 	/* Theme Functions */
 	public function theme_page()
+
 	{
 		require_once('/inc/themes.php');
 	}	
