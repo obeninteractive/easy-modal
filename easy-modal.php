@@ -4,7 +4,7 @@ Plugin Name: Easy Modal
 Plugin URI: http://wizardinternetsolutions.com/plugins/easy-modal/
 Description: Easy Modal allows you to easily add just about any shortcodes or other content into a modal window. This includes forms such as CF7.
 Author: Wizard Internet Solutions
-Version: 1.1.9.7
+Version: 1.1.9.8
 Author URI: http://wizardinternetsolutions.com
 */
 add_action('admin_init', '_disable_older_versions', 1 );
@@ -18,7 +18,7 @@ function _disable_older_versions()
 /* Change Begin */
 class Easy_Modal {
 	var $Plugin = array(
-		'version' => '1.1.9.7',
+		'version' => '1.1.9.8',
 		'name' => 'Easy Modal',
 		'slug' => 'easy-modal',
 		'short'=> 'EasyModal'
@@ -34,12 +34,11 @@ class Easy_Modal {
 		// Add WPMU Support
 		// Add default options on new site creation.
 		add_action('wpmu_new_blog', array(&$this, '_wpmu_activation'));
+		add_action('init', array(&$this,'_migrate'),10);
 		
 		if (is_admin())
 		{
-			
 			add_action('init', array(&$this,'_activation'),9);
-			add_action('init', array(&$this,'_migrate'),10);
             register_activation_hook(__FILE__, array(&$this, '_activation'));
 
 			add_action('admin_menu', array(&$this, '_menus') );
@@ -191,7 +190,7 @@ class Easy_Modal {
 		{
 			$this->resetOptions();
 		}
-		update_option('EasyModal_Version', $this->Plugin['info']['Version']);
+		update_option('EasyModal_Version', $this->Plugin['version']);
 	}
 	public function _migrate()
 	{
