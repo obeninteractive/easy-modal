@@ -4,7 +4,7 @@ Plugin Name: Easy Modal
 Plugin URI: http://wizardinternetsolutions.com/plugins/easy-modal/
 Description: Easy Modal allows you to easily add just about any shortcodes or other content into a modal window. This includes forms such as CF7.
 Author: Wizard Internet Solutions
-Version: 1.1.9.3
+Version: 1.1.9.4
 Author URI: http://wizardinternetsolutions.com
 */
 if (is_admin() && ! function_exists( 'get_plugin_data' ) )
@@ -32,8 +32,8 @@ class Easy_Modal {
 		$this->Plugin['dir'] = PLUGINDIR.'/'. dirname( plugin_basename(__FILE__));
 		$this->Plugin['url'] = trailingslashit  (get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
 		
-		
 		$this->_migrate();
+		
 		// Add WPMU Support
 		// Add default options on new site creation.
 		add_action('wpmu_new_blog', array(&$this, '_wpmu_activation'));
@@ -82,6 +82,7 @@ class Easy_Modal {
 	}
 	private function _migrate_EM()
 	{
+		global $wp;
 		$o_modal_list = get_option('EasyModal');
 		if(!is_array($o_modal_list))
 		{
@@ -103,6 +104,7 @@ class Easy_Modal {
 	}
 	private function _migrate_EM_Lite()
 	{
+		global $wp;
 		$o_modal_list = get_option('EasyModalLite_ModalList');
 		if(!is_array($o_modal_list))
 		{
@@ -138,6 +140,7 @@ class Easy_Modal {
 	}
 	private function _migrate_EM_Pro()
 	{
+		global $wp;
 		$o_theme_list = get_option('EasyModalPro_ModalList');
 		if(!is_array($o_theme_list))
 		{
@@ -189,16 +192,15 @@ class Easy_Modal {
 	}
 	public function _activation()
 	{
-		$this->_migrate();
-	}
-	public function _migrate()
-	{
-		global $wp;
 		if(!get_option('EasyModal_Version'))
 		{
 			$this->resetOptions();
 		}
 		update_option('EasyModal_Version', $this->Plugin['info']['Version']);
+		$this->_migrate();
+	}
+	public function _migrate()
+	{
 		// detect EM Free
 		if(get_option('eM_version'))
 		{
@@ -428,7 +430,7 @@ class Easy_Modal {
 	}
 	public function getModalList()
 	{
-		return get_option('EasyModal_ModalList');
+		return get_option('EasyModal_ModalList',array());
 	}
 	public function getModalSettings($modal_id)
 	{
@@ -454,7 +456,7 @@ class Easy_Modal {
 	public function updateModalSettings( $modal_id, $post = NULL )
 	{
 		global $wp;
-		$modals = get_option('EasyModal_ModalList');
+		$modals = get_option('EasyModal_ModalList',array());
 		if($modal_id == 'new')
 		{
 			$highest = 0;
@@ -536,7 +538,7 @@ class Easy_Modal {
 	}
 	public function deleteModal( $modal_id )
 	{
-		$modals = get_option('EasyModal_ModalList');
+		$modals = get_option('EasyModal_ModalList',array());
 		unset($modals[$modal_id]);
 		update_option('EasyModal_ModalList', $modals);
 		delete_option('EasyModal_Modal-'.$modal_id);
