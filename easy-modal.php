@@ -4,7 +4,7 @@ Plugin Name: Easy Modal
 Plugin URI: http://wizardinternetsolutions.com/plugins/easy-modal/
 Description: Easy Modal allows you to easily add just about any shortcodes or other content into a modal window. This includes forms such as CF7.
 Author: Wizard Internet Solutions
-Version: 1.0
+Version: 1.1.9
 Author URI: http://wizardinternetsolutions.com
 */
 if (is_admin() && ! function_exists( 'get_plugin_data' ) )
