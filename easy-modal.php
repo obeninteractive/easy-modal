@@ -4,12 +4,9 @@ Plugin Name: Easy Modal
 Plugin URI: http://wizardinternetsolutions.com/plugins/easy-modal/
 Description: Easy Modal allows you to easily add just about any shortcodes or other content into a modal window. This includes forms such as CF7.
 Author: Wizard Internet Solutions
-Version: 1.1.9.6
+Version: 1.1.9.7
 Author URI: http://wizardinternetsolutions.com
 */
-if (is_admin() && ! function_exists( 'get_plugin_data' ) )
-	require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-	
 add_action('admin_init', '_disable_older_versions', 1 );
 function _disable_older_versions()
 {
@@ -21,6 +18,7 @@ function _disable_older_versions()
 /* Change Begin */
 class Easy_Modal {
 	var $Plugin = array(
+		'version' => '1.1.9.7',
 		'name' => 'Easy Modal',
 		'slug' => 'easy-modal',
 		'short'=> 'EasyModal'
@@ -32,8 +30,6 @@ class Easy_Modal {
 		$this->Plugin['dir'] = PLUGINDIR.'/'. dirname( plugin_basename(__FILE__));
 		$this->Plugin['url'] = trailingslashit  (get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
 		
-		add_action('init', array(&$this,'_activation'),9);
-		add_action('init', array(&$this,'_migrate'),10);
 		
 		// Add WPMU Support
 		// Add default options on new site creation.
@@ -41,12 +37,14 @@ class Easy_Modal {
 		
 		if (is_admin())
 		{
-			$this->Plugin['info'] = get_plugin_data($this->Plugin['file']);
-			$this->Plugin['license'] = get_option('EasyModal_License');
+			
+			add_action('init', array(&$this,'_activation'),9);
+			add_action('init', array(&$this,'_migrate'),10);
+            register_activation_hook(__FILE__, array(&$this, '_activation'));
+
 			add_action('admin_menu', array(&$this, '_menus') );
 			
 			add_filter( 'plugin_action_links', array(&$this, '_actionLinks') , 10, 2 );
-            register_activation_hook(__FILE__, array(&$this, '_activation'));
             add_filter('mce_buttons_2', array(&$this, '_TinyMCEButtons'), 999);
             add_filter('tiny_mce_before_init', array(&$this, '_TinyMCEInit'));
         }
@@ -222,7 +220,7 @@ class Easy_Modal {
 		{
 			$this->resetOptions();
 		}
-		update_option('EasyModal_Version', $this->Plugin['info']['Version']);
+		update_option('EasyModal_Version', $this->Plugin['version']);
 		restore_current_blog();
 	}
 	public function resetOptions()
@@ -701,6 +699,7 @@ class Easy_Modal {
 	}
 	public function enqueue_themes()
 	{
+
 		$settings = array(
 			1 => $this->getThemeSettings(1)
 		);
@@ -712,7 +711,7 @@ class Easy_Modal {
 	{
 		$args = new stdClass;
 		$args->slug = $this->Plugin['slug'];
-		$args->version = $this->Plugin['info']['Version'];
+		$args->version = $this->Plugin['version'];
 		$request_string = $this->uopdate_request('license_check', $args);
 		$request = wp_remote_post($this->api_url, $request_string);
 		if (is_wp_error($request))
