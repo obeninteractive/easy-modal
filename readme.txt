@@ -1,10 +1,10 @@
 === Easy Modal ===
 Contributors: danieliser
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PQTG2JYUKSLFW
-Tags: modal, contact form 7, ajax
+Tags: modal, contact form 7, ajax, gravity forms, ajax form
 Requires at least: 3.0.1
-Tested up to: 3.3
-Stable tag: 1.0.4
+Tested up to: 3.5.2
+Stable tag: 1.1.9
 
 This plugin allows you to easily add a Modal window with just about any content including Contact Form 7 using ajax submission.
 
