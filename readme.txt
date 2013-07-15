@@ -1,7 +1,9 @@
 === Easy Modal ===
 Contributors: danieliser
+Author URI: http://wizardinternetsolutions.com
+Plugin URI: http://wizardinternetsolutions.com/plugins/easy-modal
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PQTG2JYUKSLFW
-Tags: modal, contact form 7, ajax, gravity forms, ajax form
+Tags: modal,modal box,modal form,modal window,popup,popup box,popup form,popup window,ajax,ajax forms,contact form 7,gravity forms
 Requires at least: 3.0.1
 Tested up to: 3.5.2
 Stable tag: 1.1.9.9
