@@ -4,7 +4,7 @@ Plugin Name: Easy Modal
 Plugin URI: http://wizardinternetsolutions.com/plugins/easy-modal/
 Description: Easy Modal allows you to easily add just about any shortcodes or other content into a modal window. This includes forms such as CF7.
 Author: Wizard Internet Solutions
-Version: 1.1.9.8
+Version: 1.1.9.9
 Author URI: http://wizardinternetsolutions.com
 */
 add_action('admin_init', '_disable_older_versions', 1 );
@@ -18,7 +18,7 @@ function _disable_older_versions()
 /* Change Begin */
 class Easy_Modal {
 	var $Plugin = array(
-		'version' => '1.1.9.8',
+		'version' => '1.1.9.9',
 		'name' => 'Easy Modal',
 		'slug' => 'easy-modal',
 		'short'=> 'EasyModal'
@@ -34,11 +34,11 @@ class Easy_Modal {
 		// Add WPMU Support
 		// Add default options on new site creation.
 		add_action('wpmu_new_blog', array(&$this, '_wpmu_activation'));
-		add_action('init', array(&$this,'_migrate'),10);
 		
 		if (is_admin())
 		{
 			add_action('init', array(&$this,'_activation'),9);
+			add_action('init', array(&$this,'_migrate'),10);
             register_activation_hook(__FILE__, array(&$this, '_activation'));
 
 			add_action('admin_menu', array(&$this, '_menus') );
@@ -322,12 +322,12 @@ class Easy_Modal {
 
 	public function dashboard_page()
 	{
-		require_once('/inc/dashboard.php');
+		require_once(ABSPATH.PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)).'/inc/dashboard.php');
 	}
 
 	public function settings_page()
 	{
-		require_once('/inc/settings.php');
+		require_once(ABSPATH.PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)).'/inc/settings.php');
 	}
 	public function getSettings()
 	{
@@ -407,7 +407,7 @@ class Easy_Modal {
 	/* Modal Functions */
 	public function modal_page()
 	{
-		require_once('/inc/modals.php');
+		require_once(ABSPATH.PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)).'/inc/modals.php');
 	}
 	public function getModalList()
 	{
@@ -548,7 +548,7 @@ class Easy_Modal {
 	public function theme_page()
 
 	{
-		require_once('/inc/themes.php');
+		require_once(ABSPATH.PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)).'/inc/themes.php');
 	}	
 	public function getThemeList()
 	{
