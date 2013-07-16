@@ -8,7 +8,7 @@ Requires at least: 3.0.1
 Tested up to: 3.5.2
 Stable tag: 1.1.9.9
 
-Easily create & style modals with any content. Theme editor for quickly styling your modals. Add forms, social media boxes, videos, slideshows & more.
+Easily create & style modals with any content. Theme editor for quickly styling your modals. Add forms, social media boxes, videos & more.
 
 == Description ==
 
