@@ -8,6 +8,7 @@ Requires at least: 3.2
 Tested up to: 3.6
 Stable tag: 1.2
 Easily create & style modals with any content. Theme editor to quickly style your modals. Add forms, social media boxes, videos, slideshows & more.
+
 == Description ==
 This plugin allows you to easily add unlimited Modal windows with just about any content. It accepts shortcodes and has been tested to work with Contact Form 7 custom forms using ajax submission.
  
@@ -21,6 +22,7 @@ This plugin allows you to easily add unlimited Modal windows with just about any
 * Load modals on every page or just certain pages.
 * Quickly add modals to any highlighted text in editor.
 * Allows custom JS functions to open & close modals.
+
 = Pro Features =
 * Premium Support*
 * Unlimited Themes
@@ -33,67 +35,16 @@ This plugin allows you to easily add unlimited Modal windows with just about any
 * Premium User Support Forum
 * Expedited Feature Requests
 * Setup Assistance
-= Detailed Features & Options =
-* Modal Options
-* Name: Enter a name for your modal.
-* Sitewide: Should this modal be loaded on every page of the site?
-* Title: The title that appears in the modal window.
-* Content: Modal content. Can contain shortcodes.
-* Theme*: Choose the Theme for this modal.
-* Size: Select the size of the modal.
-* Animation: Select an animation for the modal.
-* Speed: Set the animation speed for the modal.
-* Click Overlay to Close: Choose whether the modal will close when you click the overlay.
-* ESC Key to Close: Choose whether the modal will close press Esc.
-* Disable close button*: Choose whether to show the close button.
-Theme Options
-* Theme Name: Enter a name for your theme.
-* Overlay Color: Choose the overlay color.
-* Overlay Opacity: The opacity value for the overlay.
-* Close Location: Choose whether the close button is inside or outside of the modal.
-* Close Background Color: Choose the background color for your close button.
-* Close Font Color: Choose the font color for your close button.
-* Close Font Size: Choose the font size for your close button.
-* Close Border Radius: Choose a corner radius for your close button.
-* Close Size: Choose a size for your close button.
-* Close Position: Choose which corner the close button will be positioned.
-* Container Background Color: Choose a color for the background of the modal.
-* Container Padding: Choose the amount of padding for the modal.
-* Container Border Style: Choose a style for the border of the modal.
-* Container Border Color: Choose a color for the border of the modal.
-* Container Border Width: Choose a width for the border of the modal.
-* Container Border Radius: Choose a width for the border of the modal.
-* Content Title Color: Choose a color for the title.
-* Content Title Font Size: Choose a font size for the title.
-* Content Title Font Family: Choose a font for the title.
-* Content Font Color: Choose a font color body of the modal.
-Page / Post Editor Options & Settings
-* Easily add modals to highlighted text in the wp editor.
-* Select which modals to load: Select which modals to load on this page ( Page / Post Specific )
-* Auto Open Modal*: Select which modals to popup on first visit. ( Page / Post Specific )
-* Auto Open Delay*: How long to delay before showing. ( Page / Post Specific )
-* Auto Open Timer*: Time set in cookie before modal will be shown again. ( Page / Post Specific )
-* Exit Detected Modal*: Select which modals to popup on visitor exit. ( Page / Post Specific )
-* Auto Exit Timer*: Time set in cookie before modal will be shown again. ( Page / Post Specific )
-* Force User Login with Modal*: Force user login with a modal window. ( Page / Post Specific )
-Settings
-* License Key: Enter license key to upgrade to pro.
-* Auto Open Modal*: Select which modals to popup on first visit. ( Site-wide )
-* Auto Open Delay*: How long to delay before showing. ( Site-wide )
-* Auto Open Timer*: Time set in cookie before modal will be shown again. ( Site-wide )
-* Exit Detected Modal*: Select which modals to popup on visitor exit. ( Site-wide )
-* Auto Exit Timer*: Time set in cookie before modal will be shown again. ( Site-wide )
-* Login Modal Enabled* Enable Login, Registration & Forgot Password Modals
-* Force User Login*: Force users to login, otherwise they get login modal. ( Site-wide )
-Export / Import *
-* Export Type: Choose what you want to export. ( Full, Themes, Modals, Settings )
-* Import File: Choose a backup XML file to import.
-* Force Factory Reset: If checked current modals and themes will be lost.
-[youtube http://www.youtube.com/watch?v=w9Us4ttVuZU]
+
+
 If you like the plugin please rate it.
+
 [Easy Modal Page](https://easy-modal.com "Easy Modal Page - Info, Demo and Discussion") - Info, Demo and Feature Discussion
+
 [Wizard Internet Solutions](http://wizardinternetsolutions.com "Website Design & Development") - Developers Site
+
 To be notified of plugin updates, [follow us on Twitter](http://twitter.com/EasyModal "Wizard Internet Solutions on Twitter")!
+
 == Installation ==
 = Version 1.0.0 and above =
 1. Upload `Easy-Modal` folder to the `/wp-content/plugins/` directory
