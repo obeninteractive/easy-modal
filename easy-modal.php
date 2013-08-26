@@ -104,6 +104,7 @@ class Easy_Modal {
 			return $post_id;
 
 		$post_modals = ( !empty( $_POST['easy_modal_post_modals']) && $this->all_numeric($_POST['easy_modal_post_modals']) ) ? $_POST['easy_modal_post_modals'] : array() ;
+
 		$current_post_modals = get_post_meta( $post_id, 'easy_modal_post_modals', true );
 		if ( $post_modals && '' == $current_post_modals )
 			add_post_meta( $post_id, 'easy_modal_post_modals', $post_modals, true );
@@ -568,7 +569,7 @@ class Easy_Modal {
 					break;
 				case 'modal': $this->updateModalSettings(isset($_GET['modal_id']) ? $_GET['modal_id'] : NULL, $post, $_GET['modal_id'] == 'new' ? true : false);
 					break;
-				case 'theme': $this->updateThemeSettings(isset($_GET['theme_id']) ? $_GET['theme_id'] : NULL, $post, $_GET['modal_id'] == 'new' ? true : false);
+				case 'theme': $this->updateThemeSettings(isset($_GET['theme_id']) ? $_GET['theme_id'] : NULL, $post, $_GET['theme_id'] == 'new' ? true : false);
 					break;
 			}
 		}
