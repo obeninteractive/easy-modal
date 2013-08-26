@@ -6,7 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: modal,modal box,modal form,modal window,popup,popup box,popup form,popup window,ajax forms
 Requires at least: 3.2
 Tested up to: 3.6
-Stable tag: 1.2
+Stable tag: 1.2.0.1
 Easily create & style modals with any content. Theme editor to quickly style your modals. Add forms, social media boxes, videos, slideshows & more.
 
 == Description ==
@@ -67,6 +67,9 @@ We have only included some basic styling for the modal at this point. You can ad
 1. Easy Modal with default "Contact Fom 7" form.
 2. Shows CF7 Inline validation used during ajax submit
 == Changelog ==
+= 1.2.0.1 =
+* Fixed issue that caused wp editor to not load with certain themes.
+
 = 1.2 =
 * Code has been rewritten from ground up, JS, admin panels etc.
 * Added animations

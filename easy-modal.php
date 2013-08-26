@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Easy Modal
-Plugin URI: http://wizardinternetsolutions.com/plugins/easy-modal/
+Plugin URI: https://easy-modal.com
 Description: Easily create & style modals with any content. Theme editor to quickly style your modals. Add forms, social media boxes, videos & more. 
 Author: Wizard Internet Solutions
-Version: 1.2
+Version: 1.2.0.1
 Author URI: http://wizardinternetsolutions.com
 */
 if (!defined('EASYMODAL'))
@@ -20,7 +20,7 @@ if (!defined('EASYMODAL_URL'))
     define('EASYMODAL_URL', WP_PLUGIN_URL . '/' . EASYMODAL_SLUG);
 
 if (!defined('EASYMODAL_VERSION'))
-    define('EASYMODAL_VERSION', '1.2' );
+    define('EASYMODAL_VERSION', '1.2.0.1' );
 
 class Easy_Modal {
 	protected $api_url = 'http://easy-modal.com/api';
@@ -53,7 +53,8 @@ class Easy_Modal {
 			}
 			add_filter( 'plugin_action_links', array(&$this, '_actionLinks') , 10, 2 );
             add_filter('mce_buttons_2', array(&$this, '_TinyMCEButtons'), 999);
-            add_filter('tiny_mce_before_init', array(&$this, '_TinyMCEInit'));
+            add_filter('tiny_mce_before_init', array(&$this, '_TinyMCEInit'),999);
+			
 			
 			add_action( 'load-post.php', array(&$this, 'post_meta_boxes_setup'));
 			add_action( 'load-post-new.php', array(&$this, 'post_meta_boxes_setup') );
@@ -104,7 +105,6 @@ class Easy_Modal {
 			return $post_id;
 
 		$post_modals = ( !empty( $_POST['easy_modal_post_modals']) && $this->all_numeric($_POST['easy_modal_post_modals']) ) ? $_POST['easy_modal_post_modals'] : array() ;
-
 		$current_post_modals = get_post_meta( $post_id, 'easy_modal_post_modals', true );
 		if ( $post_modals && '' == $current_post_modals )
 			add_post_meta( $post_id, 'easy_modal_post_modals', $post_modals, true );
@@ -376,32 +376,31 @@ class Easy_Modal {
 		{
 			$posk_links = '<a href="'.get_admin_url().'admin.php?page='.EASYMODAL_SLUG.'-settings">'.__('Settings').'</a>';
 			array_unshift( $links, $posk_links );
-			$posk_links = '<a href="http://wizardinternetsolutions.com/plugins/easy-modal?utm_source=em-lite&utm_medium=dashboard+link&utm_campaign=upgrade">'.__('Upgrade').'</a>';
+			$posk_links = '<a href="https://easy-modal.com/pricing-purchase?utm_source=em-lite&utm_medium=dashboard+link&utm_campaign=upgrade">'.__('Upgrade').'</a>';
 			array_unshift( $links, $posk_links );
 		}
 		return $links;
 	}
-	public function _TinyMCEButtons($orig)
+	public function _TinyMCEButtons($buttons)
 	{
-		return array_merge($orig, array('styleselect'));
+        if ( ! in_array( 'styleselect', $buttons ) )
+            $buttons[] = 'styleselect';
+		return $buttons;
 	}
 	public function _TinyMCEInit($initArray)
 	{
-		global $wpdb;
-		// Custom classes
-		$modals = $this->getModalList();
-		$customClasses = array();
-		foreach($modals as $key => $modal)
+		// Add Modal styles to styles dropdown
+		$styles = json_decode($initArray['style_formats']);
+		if(!is_array($styles)) $styles = array();
+		foreach($this->getModalList() as $key => $modal)
 		{
-			$customClasses['Modal - '.$modal] = 'eModal-'.$key;
-		}        
-		// Build array
-		$initArray['theme_advanced_styles'] = isset($initArray['theme_advanced_styles']) ? $initArray['theme_advanced_styles'] : '';
-		foreach($customClasses as $name => $css)
-		{
-			$initArray['theme_advanced_styles'] .= $name.'='.$css.';';
-		} 
-		$initArray['theme_advanced_styles'] = rtrim($initArray['theme_advanced_styles'], ';'); // Remove final semicolon from list
+			$styles[] = array(
+				'title' => "Open Modal - $modal",
+				'inline' => 'span',
+				'classes' => "eModal-$key"
+			);
+		}
+		$initArray['style_formats'] = json_encode($styles);     
 		return $initArray;
 	}
 	private $_accepted_modal_ids = array('new');
