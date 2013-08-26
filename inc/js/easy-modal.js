@@ -284,12 +284,10 @@
 		{
 			var theme = themes[opts.theme];
 		}
-		return $this
-			.addClass('theme-'+opts.theme)
-			.animate({
-				backgroundColor: theme.overlayColor,
-				opacity: theme.overlayOpacity / 100
-			},opts.duration);
+		return $this.addClass('theme-'+opts.theme).animate({
+			backgroundColor: theme.overlayColor,
+			opacity: theme.overlayOpacity / 100
+		},opts.duration);
 	};
 	$.fn.themeModal = function(opts)
 	{
@@ -311,6 +309,7 @@
 			});
 		}
 		return $this
+			.addClass(opts.size)
 			.addClass('theme-'+opts.theme)
 			.css({
 				color: theme.contentFontColor,
@@ -371,8 +370,7 @@
 					lineHeight: theme.closeSize + 'px'
 				});
 		}
-		return $this
-			.addClass('theme-'+opts.theme)
+		return $this.addClass('theme-'+opts.theme)
 			.html(theme.closeText)
 			.css({
 				color: theme.closeFontColor,
