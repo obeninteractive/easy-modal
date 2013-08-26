@@ -91,9 +91,9 @@ Export / Import *
 * Force Factory Reset: If checked current modals and themes will be lost.
 [youtube http://www.youtube.com/watch?v=w9Us4ttVuZU]
 If you like the plugin please rate it.
-[Easy Modal Page](http://wizardinternetsolutions.com/plugins/easy-modal/ "Easy Modal Page - Info, Demo and Discussion") - Info, Demo and Feature Discussion
-[Wizard Internet Solutions](http://wizardinternetsolutions.com/ "Website Design & Development") - Developers Site
-To be notified of plugin updates, [follow us on Twitter](http://twitter.com/wizard_is "Wizard Internet Solutions on Twitter")!
+[Easy Modal Page](https://easy-modal.com "Easy Modal Page - Info, Demo and Discussion") - Info, Demo and Feature Discussion
+[Wizard Internet Solutions](http://wizardinternetsolutions.com "Website Design & Development") - Developers Site
+To be notified of plugin updates, [follow us on Twitter](http://twitter.com/EasyModal "Wizard Internet Solutions on Twitter")!
 == Installation ==
 = Version 1.0.0 and above =
 1. Upload `Easy-Modal` folder to the `/wp-content/plugins/` directory
