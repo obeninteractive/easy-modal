@@ -4,7 +4,7 @@ Plugin Name: Easy Modal
 Plugin URI: https://easy-modal.com
 Description: Easily create & style modals with any content. Theme editor to quickly style your modals. Add forms, social media boxes, videos & more. 
 Author: Wizard Internet Solutions
-Version: 1.2.0.1
+Version: 1.2.0.2
 Author URI: http://wizardinternetsolutions.com
 */
 if (!defined('EASYMODAL'))
@@ -20,7 +20,7 @@ if (!defined('EASYMODAL_URL'))
     define('EASYMODAL_URL', WP_PLUGIN_URL . '/' . EASYMODAL_SLUG);
 
 if (!defined('EASYMODAL_VERSION'))
-    define('EASYMODAL_VERSION', '1.2.0.1' );
+    define('EASYMODAL_VERSION', '1.2.0.2' );
 
 class Easy_Modal {
 	protected $api_url = 'http://easy-modal.com/api';
@@ -390,8 +390,7 @@ class Easy_Modal {
 	public function _TinyMCEInit($initArray)
 	{
 		// Add Modal styles to styles dropdown
-		$styles = json_decode($initArray['style_formats']);
-		if(!is_array($styles)) $styles = array();
+		$styles = !empty($initArray['style_formats']) && is_array(json_decode($initArray['style_formats'])) ? json_decode($initArray['style_formats']) : array();
 		foreach($this->getModalList() as $key => $modal)
 		{
 			$styles[] = array(
