@@ -6,7 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: modal,modal box,modal form,modal window,popup,popup box,popup form,popup window,ajax forms
 Requires at least: 3.2
 Tested up to: 3.6
-Stable tag: 1.2.0.4
+Stable tag: 1.2.0.9
 Easily create & style modals with any content. Theme editor to quickly style your modals. Add forms, social media boxes, videos, slideshows & more.
 
 == Description ==
@@ -54,10 +54,13 @@ To be notified of plugin updates, [follow us on Twitter](http://twitter.com/Easy
 5. Copy and Add ``eModal-#` class from the modals settings page to the object you want to make activate the modal window. Will work on divs, links, list elements and just about anything else.
 
 == Changelog ==
+= 1.2.0.9=
+* Fixed CSS z-index issues ( set modal z-index to 999, and overlay to 998 to make sure they are above other elements )
+* Fixed an issue with upgrading from previous versions.
+
 = 1.2.0.4 =
 * Fixed data migration issue ( wasn't setting sites to sitewide )
 * Added filters for modal content. Use add_filter('em_modal_content', 'your_custom_function'); function your_custom_function($content);
-
 = 1.2.0.2 =
 * Fixed issue of undefined array key.
 = 1.2.0.1 =

@@ -4,7 +4,7 @@ Plugin Name: Easy Modal
 Plugin URI: https://easy-modal.com
 Description: Easily create & style modals with any content. Theme editor to quickly style your modals. Add forms, social media boxes, videos & more. 
 Author: Wizard Internet Solutions
-Version: 1.2.0.4
+Version: 1.2.0.9
 Author URI: http://wizardinternetsolutions.com
 */
 if (!defined('EASYMODAL'))
@@ -20,7 +20,7 @@ if (!defined('EASYMODAL_URL'))
     define('EASYMODAL_URL', WP_PLUGIN_URL . '/' . EASYMODAL_SLUG);
 
 if (!defined('EASYMODAL_VERSION'))
-    define('EASYMODAL_VERSION', '1.2.0.4' );
+    define('EASYMODAL_VERSION', '1.2.0.9' );
 
 class Easy_Modal {
 	protected $api_url = 'http://easy-modal.com/api';
@@ -167,14 +167,14 @@ class Easy_Modal {
 		else
 		{
 			$current_version = get_option('EasyModal_Version');
-			if(in_array($current_version,array('1.1.9.9','1.2','1.2.0.1','1.2.0.2')))
+			if(in_array($current_version,array('1.1.9.9','1.2','1.2.0.1','1.2.0.2','1.2.0.4')))
 			{
 				foreach($this->getModalList() as $key => $name)
 				{
 					$modal = $this->getModalSettings($key);
-					$modal['sitewide'] = true;	
-					$modal['overlayClose'] = $modal['overlayClose'] == 'true' || $modal['overlayClose'] == 'true' ? true : false;	
-					$modal['overlayEscClose'] = $modal['overlayEscClose'] == 'true' || $modal['overlayEscClose'] == 'true' ? true : false;	
+					$modal['sitewide'] = !empty($modal['sitewide']) ? $modal['sitewide'] : true;	
+					$modal['overlayClose'] = !empty($modal['overlayClose']) && ($modal['overlayClose'] == 'true' || $modal['overlayClose'] == true) ? true : false;	
+					$modal['overlayEscClose'] = !empty($modal['overlayEscClose']) && ($modal['overlayEscClose'] == 'true' || $modal['overlayEscClose'] == true) ? true : false;	
 					$this->updateModalSettings($key, $modal);
 				}
 			}
@@ -945,6 +945,7 @@ class Easy_Modal {
 	// Activated With Valid License
 	public function check_updates($checked_data)
 	{
+		unset($checked_data->response[EASYMODAL_SLUG .'/'. EASYMODAL_SLUG .'.php']);
 		if (empty($checked_data->checked))
 		{
 			return $checked_data;
@@ -955,7 +956,7 @@ class Easy_Modal {
 		{
 			$response = unserialize($request['body']);
 		}
-		if (!empty($response) && is_object($response)) // Feed the update data into WP updater
+		if (!empty($response) && is_object($response) && strpos($response->version,'p') !== false) // Feed the update data into WP updater
 		{
 			$checked_data->response[EASYMODAL_SLUG .'/'. EASYMODAL_SLUG .'.php'] = $response;
 		}
