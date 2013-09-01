@@ -6,7 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: modal,modal box,modal form,modal window,popup,popup box,popup form,popup window,ajax forms
 Requires at least: 3.2
 Tested up to: 3.6
-Stable tag: 1.2.0.2
+Stable tag: 1.2.0.4
 Easily create & style modals with any content. Theme editor to quickly style your modals. Add forms, social media boxes, videos, slideshows & more.
 
 == Description ==
@@ -26,6 +26,7 @@ This plugin allows you to easily add unlimited Modal windows with just about any
 = Pro Features =
 * Premium Support*
 * Unlimited Themes
+* Disable close icon
 * Ajax Login, Registration & Forgot Your Password Modals
 * Force User Login Modal ( Per Page / Post or Site Wide )
 * Set Modal to Auto Open ( Per Page / Post and/or Site Wide )
@@ -46,35 +47,21 @@ If you like the plugin please rate it.
 To be notified of plugin updates, [follow us on Twitter](http://twitter.com/EasyModal "Wizard Internet Solutions on Twitter")!
 
 == Installation ==
-= Version 1.0.0 and above =
 1. Upload `Easy-Modal` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Create and customize a modal in the Easy Modal settings page.
-3. Copy and Add `eModal` and `eModal-#` class from the modals settings page to the object you want to make activate the modal window. Will work on divs, links, list elements and just about anything else.
-= Versions before 1.0.0 =
-[youtube http://www.youtube.com/watch?v=w9Us4ttVuZU]
-1. Upload `Easy-Modal` folder to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Add `eModal` class to the object you want to make activate the modal window. Will work on divs, links, list elements and just about anything else.
-== Frequently Asked Questions ==
-= I have a problem! =
-If think youve found a problem please post a link with it so i can see the problem for myself.
-= Does this work with CF7 =
-Yes, this will work with any custom form shortcode and uses ajax submit features.
-= Is the form styled =
-We have only included some basic styling for the modal at this point. You can add styles to your themes styles.css or add them to the head via plugin.
-== Screenshots ==
-1. Easy Modal with default "Contact Fom 7" form.
-2. Shows CF7 Inline validation used during ajax submit
-
+4. Customize the theme to match your website on the theme settings page.
+5. Copy and Add ``eModal-#` class from the modals settings page to the object you want to make activate the modal window. Will work on divs, links, list elements and just about anything else.
 
 == Changelog ==
+= 1.2.0.4 =
+* Fixed data migration issue ( wasn't setting sites to sitewide )
+* Added filters for modal content. Use add_filter('em_modal_content', 'your_custom_function'); function your_custom_function($content);
+
 = 1.2.0.2 =
 * Fixed issue of undefined array key.
-
 = 1.2.0.1 =
 * Fixed issue that caused wp editor to not load with certain themes.
-
 = 1.2 =
 * Code has been rewritten from ground up, JS, admin panels etc.
 * Added animations

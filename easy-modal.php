@@ -4,7 +4,7 @@ Plugin Name: Easy Modal
 Plugin URI: https://easy-modal.com
 Description: Easily create & style modals with any content. Theme editor to quickly style your modals. Add forms, social media boxes, videos & more. 
 Author: Wizard Internet Solutions
-Version: 1.2.0.2
+Version: 1.2.0.4
 Author URI: http://wizardinternetsolutions.com
 */
 if (!defined('EASYMODAL'))
@@ -20,23 +20,17 @@ if (!defined('EASYMODAL_URL'))
     define('EASYMODAL_URL', WP_PLUGIN_URL . '/' . EASYMODAL_SLUG);
 
 if (!defined('EASYMODAL_VERSION'))
-    define('EASYMODAL_VERSION', '1.2.0.2' );
+    define('EASYMODAL_VERSION', '1.2.0.4' );
 
 class Easy_Modal {
 	protected $api_url = 'http://easy-modal.com/api';
 	protected $messages = array();
 	public function __construct()
 	{
-		
-		// Add WPMU Support
-		// Add default options on new site creation.
-		add_action('wpmu_new_blog', array(&$this, '_wpmu_activation'));
-		
 		if (is_admin())
 		{
 			add_action('admin_init', array(&$this,'_migrate'),1);
 			add_action('admin_init', array(&$this,'_messages'),10);
-			
 			
 			add_action('admin_init', array(&$this,'process_get'),9);
 			
@@ -61,6 +55,14 @@ class Easy_Modal {
         }
 		else
 		{
+			add_filter( 'em_modal_content', 'wptexturize' );
+			add_filter( 'em_modal_content', 'convert_smilies' );
+			add_filter( 'em_modal_content', 'convert_chars' );
+			add_filter( 'em_modal_content', 'wpautop' );
+			add_filter( 'em_modal_content', 'shortcode_unautop' );
+			add_filter( 'em_modal_content', 'prepend_attachment' );
+			add_filter( 'em_modal_content', 'do_shortcode', 11 );
+			add_filter( 'em_modal_content', array(&$this,'filters'), 100, 1);
 			add_action('wp_footer', array(&$this, 'preload_modals'),1000);
 		}
 		$this->_styles_scripts();
@@ -74,6 +76,10 @@ class Easy_Modal {
 				add_filter('plugins_api', array(&$this,'get_plugin_info'), 10, 3);
 			}
 		}
+	}
+	public function filters($content)
+	{
+		return $content;
 	}
 	public function admin_footer()
 	{
@@ -161,15 +167,15 @@ class Easy_Modal {
 		else
 		{
 			$current_version = get_option('EasyModal_Version');
-			if($current_version	== '1.1.9.9')
+			if(in_array($current_version,array('1.1.9.9','1.2','1.2.0.1','1.2.0.2')))
 			{
 				foreach($this->getModalList() as $key => $name)
 				{
 					$modal = $this->getModalSettings($key);
 					$modal['sitewide'] = true;	
-					$modal['overlayClose'] = $modal['overlayClose'] == 'true' ? true : false;	
-					$modal['overlayEscClose'] = $modal['overlayEscClose'] == 'true' ? true : false;	
-					//$this->updateModalSettings($key, $modal);
+					$modal['overlayClose'] = $modal['overlayClose'] == 'true' || $modal['overlayClose'] == 'true' ? true : false;	
+					$modal['overlayEscClose'] = $modal['overlayEscClose'] == 'true' || $modal['overlayEscClose'] == 'true' ? true : false;	
+					$this->updateModalSettings($key, $modal);
 				}
 			}
 		}
@@ -299,13 +305,6 @@ class Easy_Modal {
 		delete_option('EasyModalPro_Settings');
 		delete_option('EasyModalPro_Version');
 		$this->updateSettings($o_settings);
-	}
-	public function _wpmu_activation($blog_id, $user_id, $domain, $path, $site_id, $meta)
-	{
-		// Make sure the user can perform this action and the request came from the correct page.
-		switch_to_blog($blog_id);
-		$this->_migrate();
-		restore_current_blog();
 	}
 	public function resetOptions()
 	{
