@@ -43,7 +43,9 @@ Make Pop Ups, Lightboxes & Modals that look like they match your site.
 If you like the plugin please [rate it](http://wordpress.org/support/view/plugin-reviews/easy-modal "Easy Modal Ratings & Reviews").
 
 [Easy Modal Page](https://easy-modal.com "Easy Modal Page - Info, Demo and Discussion") - Info, Demo and Feature Discussion
+
 [Wizard Internet Solutions](http://wizardinternetsolutions.com "Website Design & Development") - Developers Site
+
 To be notified of plugin updates, [follow us on Twitter](http://twitter.com/EasyModal "Easy Modal on Twitter")!
 
 == Installation ==
