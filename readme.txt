@@ -6,11 +6,13 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: modal,modal box,modal form,modal window,popup,popup box,popup form,popup window,ajax forms
 Requires at least: 3.2
 Tested up to: 3.6
-Stable tag: 1.2.0.9
+Stable tag: 1.2.1
 Easily create & style modals with any content. Theme editor to quickly style your modals. Add forms, social media boxes, videos, slideshows & more.
 
 == Description ==
 This plugin allows you to easily add unlimited Modal windows with just about any content. It accepts shortcodes and has been tested to work with Contact Form 7 custom forms using ajax submission.
+
+Make Pop Ups, Lightboxes & Modals that look like they match your site.
  
 = Core Features =
 * Unlimited Customizable Modals
@@ -37,14 +39,12 @@ This plugin allows you to easily add unlimited Modal windows with just about any
 * Expedited Feature Requests
 * Setup Assistance
 
-
-If you like the plugin please rate it.
+= If you love it, Rate It =
+If you like the plugin please [rate it](http://wordpress.org/support/view/plugin-reviews/easy-modal "Easy Modal Ratings & Reviews").
 
 [Easy Modal Page](https://easy-modal.com "Easy Modal Page - Info, Demo and Discussion") - Info, Demo and Feature Discussion
-
 [Wizard Internet Solutions](http://wizardinternetsolutions.com "Website Design & Development") - Developers Site
-
-To be notified of plugin updates, [follow us on Twitter](http://twitter.com/EasyModal "Wizard Internet Solutions on Twitter")!
+To be notified of plugin updates, [follow us on Twitter](http://twitter.com/EasyModal "Easy Modal on Twitter")!
 
 == Installation ==
 1. Upload `Easy-Modal` folder to the `/wp-content/plugins/` directory
@@ -54,64 +54,71 @@ To be notified of plugin updates, [follow us on Twitter](http://twitter.com/Easy
 5. Copy and Add ``eModal-#` class from the modals settings page to the object you want to make activate the modal window. Will work on divs, links, list elements and just about anything else.
 
 == Changelog ==
-= 1.2.0.9=
+= v1.2.1 =
+* Fixes compatibility issues with Ultimate TinyMCE Plugin.
+* Added plugin update notes to plugin page when updates are available.
+
+= v1.2.0.9 =
 * Fixed CSS z-index issues ( set modal z-index to 999, and overlay to 998 to make sure they are above other elements )
 * Fixed an issue with upgrading from previous versions.
 
-= 1.2.0.4 =
+= v1.2.0.4 =
 * Fixed data migration issue ( wasn't setting sites to sitewide )
 * Added filters for modal content. Use add_filter('em_modal_content', 'your_custom_function'); function your_custom_function($content);
-= 1.2.0.2 =
+= v1.2.0.2 =
 * Fixed issue of undefined array key.
-= 1.2.0.1 =
+= v1.2.0.1 =
 * Fixed issue that caused wp editor to not load with certain themes.
-= 1.2 =
+= v1.2 =
 * Code has been rewritten from ground up, JS, admin panels etc.
 * Added animations
 * Added responsive modals
 * Added several additional settings.
-= 1.0.2 =
+= v1.0.2 =
 * Fix for installation glitch.
-= 1.0.0 =
+= v1.0.0 =
 * Release v1.0.0 Is a was rebuilt from the ground up. Features Include:
 * Unlimited Modals
 * Lighter Filesizes for Faster Loading
 * Auto Centers no matter what the content
 * Recenters on window resize/move
-= 0.9.0.11 =
+= v0.9.0.11 =
 * Bug Fix in Settings page color picker.
-= 0.9.0.10 =
+= v0.9.0.10 =
 * Bug Fix in CSS Fixes Form scrolling only when needed.
-= 0.9.0.9 =
+= v0.9.0.9 =
 * Bug Fix in CSS Fixes Form scrolling.
-= 0.9.0.8 =
+= v0.9.0.8 =
 * Bug Fix in JS (Missing " fixed)
-= 0.9.0.7 =
+= v0.9.0.7 =
 * Bug Fix in JS (Affected loading of content into window)
-= 0.9.0.6 =
+= v0.9.0.6 =
 * Bug Fix in JS (Affected WordPress versions below 3.1)
 = 0.9.0.5 =
 * Bug Fix in JS (Affected IE7).
-= 0.9.0.4 =
+= v0.9.0.4 =
 * Added "Default" Theme for Modal windows. Includes CF7 Styles and Inline AJAX Styleing. See Screenshots.
 * Default Options Tweaked for better OOB Experience.
 * Added Version to WP Options table to provide better update functionality.
-= 0.9.0.3 =
+= v0.9.0.3 =
 * Overlay Click to Close Option
 * Auto Position Option
 * Position Top Option
 * Position Left Option
 * Auto Resize Option
-= 0.9.0.2 =
+= v0.9.0.2 =
 * Added Overlay Color Picker.
-= 0.9.0.1 =
+= v0.9.0.1 =
 * Added Height & Width options.
-= 0.9 =
+= v0.9 =
 * Initial Release
+
 == Upgrade Notice ==
-= 1.0.0 =
+= v1.2.1 = 
+* Fixes compatibility issues with Ultimate TinyMCE Plugin.
+= v1.0.0 =
 * This is a new build your settings will be reset.
-= 0.9.0.4 =
+= v0.9.0.4 =
 * Options will be overwritten with default options.
 = 0.9 =
 * Initial Release

@@ -4,7 +4,7 @@ Plugin Name: Easy Modal
 Plugin URI: https://easy-modal.com
 Description: Easily create & style modals with any content. Theme editor to quickly style your modals. Add forms, social media boxes, videos & more. 
 Author: Wizard Internet Solutions
-Version: 1.2.0.9
+Version: 1.2.1
 Author URI: http://wizardinternetsolutions.com
 */
 if (!defined('EASYMODAL'))
@@ -20,7 +20,7 @@ if (!defined('EASYMODAL_URL'))
     define('EASYMODAL_URL', WP_PLUGIN_URL . '/' . EASYMODAL_SLUG);
 
 if (!defined('EASYMODAL_VERSION'))
-    define('EASYMODAL_VERSION', '1.2.0.9' );
+    define('EASYMODAL_VERSION', '1.2.1' );
 
 class Easy_Modal {
 	protected $api_url = 'http://easy-modal.com/api';
@@ -46,7 +46,15 @@ class Easy_Modal {
 				add_action('admin_head', array(&$this,'editor_admin_head'));
 			}
 			add_filter( 'plugin_action_links', array(&$this, '_actionLinks') , 10, 2 );
-            add_filter('mce_buttons_2', array(&$this, '_TinyMCEButtons'), 999);
+			
+			$row = 2;
+			// Ultimate MCE Compatibility Check
+			$ultmce = get_option('jwl_options_group1');
+			if(isset($ultmce['jwl_styleselect_field_id']))
+			{
+				$row = intval($ultmce['jwl_styleselect_dropdown']);
+			}
+            add_filter("mce_buttons_{$row}", array(&$this, '_TinyMCEButtons'), 999);
             add_filter('tiny_mce_before_init', array(&$this, '_TinyMCEInit'),999);
 			
 			
@@ -66,6 +74,9 @@ class Easy_Modal {
 			add_action('wp_footer', array(&$this, 'preload_modals'),1000);
 		}
 		$this->_styles_scripts();
+
+		add_action( "in_plugin_update_message-".EASYMODAL_SLUG .'/'. EASYMODAL_SLUG .'.php', array(&$this,'your_update_message_cb'), 20, 2 );
+		// License Check & Updates
 		$all_options = wp_load_alloptions();
 		if(array_key_exists('EasyModal_License_Status', $all_options) && $license_status = get_option('EasyModal_License_Status'))
 		{
@@ -917,7 +928,50 @@ class Easy_Modal {
 		}
 		return $array1;
 	}
-	
+	public function your_update_message_cb( $plugin_data, $r )
+	{
+		// readme contents
+		$data = file_get_contents( 'http://plugins.trac.wordpress.org/browser/easy-modal/trunk/readme.txt?format=txt' );
+		// assuming you've got a Changelog section
+		// @example == Changelog ==
+		$changelog  = stristr( $data, '== Changelog ==' );
+		// assuming you've got a Screenshots section
+		// @example == Screenshots ==
+		//$changelog  = stristr( $changelog, '== Screenshots ==', true );
+		// only return for the current & later versions
+		// assuming you use "= v" to prepend your version numbers
+		// @example = v0.2.1 =
+		$changelog  = stristr( $changelog, "= ".EASYMODAL_VERSION );
+		
+		$changelog = explode( "\r\n", $changelog);
+		$v = false;
+		$output = '';
+		foreach($changelog as $row)
+		{
+			if(strpos($row,"=") !== false && strpos($row,"=") <= 2)
+			{
+				if($v)
+				{
+					break;
+				}
+				else $v = true;
+			}
+			if(strpos($row,"*") !== false && strpos($row,"*") <= 2)
+			{
+				$row = explode('*', $row);
+				$output .= "<li style='margin:0; padding:0;'>".ltrim(trim($row[1]))."</li>";
+			}
+		}
+		if($output != '')
+		{
+			// uncomment the next line to var_export $var contents for dev:
+			echo "<p style='margin-bottom:0'>This update includes the following:</p>";
+			echo "<ul style='padding-left:15px;margin:0;line-height:1;list-style:disc;font-size:.85em;'>";
+			echo $output;
+			echo "</ul>";
+		}
+		return;
+	}
 	public function prepare_request($action, $args = array())
 	{
 		global $wp_version;
