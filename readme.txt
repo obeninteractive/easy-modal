@@ -6,13 +6,11 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: modal,modal box,modal form,modal window,popup,popup box,popup form,popup window,ajax forms
 Requires at least: 3.2
 Tested up to: 3.6
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 Easily create & style modals with any content. Theme editor to quickly style your modals. Add forms, social media boxes, videos, slideshows & more.
 
 == Description ==
 This plugin allows you to easily add unlimited Modal windows with just about any content. It accepts shortcodes and has been tested to work with Contact Form 7 custom forms using ajax submission.
-
-Make Pop Ups, Lightboxes & Modals that look like they match your site.
  
 = Core Features =
 * Unlimited Customizable Modals
@@ -39,14 +37,14 @@ Make Pop Ups, Lightboxes & Modals that look like they match your site.
 * Expedited Feature Requests
 * Setup Assistance
 
-= If you love it, Rate It =
-If you like the plugin please [rate it](http://wordpress.org/support/view/plugin-reviews/easy-modal "Easy Modal Ratings & Reviews").
+
+If you like the plugin please rate it.
 
 [Easy Modal Page](https://easy-modal.com "Easy Modal Page - Info, Demo and Discussion") - Info, Demo and Feature Discussion
 
 [Wizard Internet Solutions](http://wizardinternetsolutions.com "Website Design & Development") - Developers Site
 
-To be notified of plugin updates, [follow us on Twitter](http://twitter.com/EasyModal "Easy Modal on Twitter")!
+To be notified of plugin updates, [follow us on Twitter](http://twitter.com/EasyModal "Wizard Internet Solutions on Twitter")!
 
 == Installation ==
 1. Upload `Easy-Modal` folder to the `/wp-content/plugins/` directory
@@ -56,6 +54,9 @@ To be notified of plugin updates, [follow us on Twitter](http://twitter.com/Easy
 5. Copy and Add ``eModal-#` class from the modals settings page to the object you want to make activate the modal window. Will work on divs, links, list elements and just about anything else.
 
 == Changelog ==
+= v1.2.2 =
+* Added filter to add meta boxes and em options to custom post types.
+
 = v1.2.1 =
 * Fixes compatibility issues with Ultimate TinyMCE Plugin.
 * Added plugin update notes to plugin page when updates are available.

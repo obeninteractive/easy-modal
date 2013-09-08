@@ -4,7 +4,7 @@ Plugin Name: Easy Modal
 Plugin URI: https://easy-modal.com
 Description: Easily create & style modals with any content. Theme editor to quickly style your modals. Add forms, social media boxes, videos & more. 
 Author: Wizard Internet Solutions
-Version: 1.2.1
+Version: 1.2.2
 Author URI: http://wizardinternetsolutions.com
 */
 if (!defined('EASYMODAL'))
@@ -20,7 +20,7 @@ if (!defined('EASYMODAL_URL'))
     define('EASYMODAL_URL', WP_PLUGIN_URL . '/' . EASYMODAL_SLUG);
 
 if (!defined('EASYMODAL_VERSION'))
-    define('EASYMODAL_VERSION', '1.2.1' );
+    define('EASYMODAL_VERSION', '1.2.2' );
 
 class Easy_Modal {
 	protected $api_url = 'http://easy-modal.com/api';
@@ -132,14 +132,14 @@ class Easy_Modal {
 	}
 	public function post_meta_boxes()
 	{
-		$screens = array('post','page');
-		foreach($screens as $screen)
+		$post_types = apply_filters('em_post_types', array('post','page'));
+		foreach($post_types as $post_types)
 		{
 			add_meta_box(
 				'easy-modal',			// Unique ID
 				esc_html__( 'Easy Modal', 'easy-modal' ),		// Title
 				array(&$this,'easy_modal_post_modals'),		// Callback function
-				$screen				// Admin page (or post type)
+				$post_types				// Admin page (or post type)
 				//'side',					// Context
 				//'default'					// Priority
 			);
