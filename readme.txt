@@ -40,7 +40,7 @@ This plugin allows you to easily add unlimited Modal windows with just about any
 
 If you like the plugin please rate it.
 
-[Easy Modal Page](https://easy-modal.com "Easy Modal Page - Info, Demo and Discussion") - Info, Demo and Feature Discussion
+[Easy Modal Page](http://easy-modal.com "Easy Modal Page - Info, Demo and Discussion") - Info, Demo and Feature Discussion
 
 [Wizard Internet Solutions](http://wizardinternetsolutions.com "Website Design & Development") - Developers Site
 
