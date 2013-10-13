@@ -35,8 +35,11 @@ Create modals in minutes. Add your favorite shortcodes for contact forms, social
 * Premium User Support Forum
 * Expedited Feature Requests
 * Setup Assistance
+
 If you like the plugin please rate it.
+
 [Easy Modal Page](https://easy-modal.com "Easy Modal Page - Info, Demo and Discussion") - Info, Demo and Feature Discussion
+
 [Wizard Internet Solutions](http://wizardinternetsolutions.com "Website Design & Development") - Developers Site
 
 To be notified of plugin updates, [follow us on Twitter](http://twitter.com/EasyModal "Wizard Internet Solutions on Twitter")!
