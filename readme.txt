@@ -6,7 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: modal,modal box,modal form,modal window,popup,popup box,popup form,popup window,ajax forms
 Requires at least: 3.2
 Tested up to: 3.6
-Stable tag: 1.3.0.1
+Stable tag: 1.3.0.2
 Create modals in minutes. Add your favorite shortcodes for contact forms, social media, videos and other multimedia or your own content.
 == Description ==
 Create modals in minutes. Add your favorite shortcodes for contact forms, social media, videos and other multimedia or your own content. Open them from anywhere including menus, sidebars, templates and anywhere else you can add css classes.
