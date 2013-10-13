@@ -20,7 +20,6 @@ if (!defined('EASYMODAL_VERSION'))
 
 include EASYMODAL_DIR . '/inc/classes/gravityforms.php';
 include EASYMODAL_DIR . '/inc/classes/shortcodes.php';
-var_dump(EASYMODAL_DIR . '/inc/classes/shortcodes.php');
 class Easy_Modal {
 	protected $api_url = 'http://easy-modal.com/api';
 	protected $messages = array();
