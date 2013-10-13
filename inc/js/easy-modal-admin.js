@@ -13,7 +13,6 @@ jQuery(document).ready(function(){
 		jQuery('#'+id).addClass('active');
 		jQuery(this).addClass('nav-tab-active');
 	});
-
 	/* Value Sliders */
 	jQuery("#overlayOpacitySlider")
 		.slider({value: 0,range: "min",min: 0,max: 100,step: 1,slide: function(t, n){

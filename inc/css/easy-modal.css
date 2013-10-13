@@ -9,9 +9,9 @@
 	top: 0;
 	left: 0;
 }
-.modal, .modal:before, .modal:after, .modal * {
+/*.modal, .modal:before, .modal:after, .modal * {
 	-moz-box-sizing: border-box;
-}
+}*/
 .modal {
 	font-size: 16px;
 	display: none;
@@ -59,6 +59,10 @@
 .modal {
 	padding: 1.875em;
 	top: 6.25em;
+}
+.modal.nano {
+	margin-left: -10%;
+	width: 20%;
 }
 .modal.tiny {
 	margin-left: -15%;

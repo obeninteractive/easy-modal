@@ -1,19 +1,19 @@
 === Easy Modal ===
 Contributors: danieliser
 Author URI: http://wizardinternetsolutions.com
-Plugin URI: https://easy-modal.com
+Plugin URI: http://easy-modal.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PQTG2JYUKSLFW
 Tags: modal,modal box,modal form,modal window,popup,popup box,popup form,popup window,ajax forms
 Requires at least: 3.2
 Tested up to: 3.6
-Stable tag: 1.2.2
-Easily create & style modals with any content. Theme editor to quickly style your modals. Add forms, social media boxes, videos, slideshows & more.
-
+Stable tag: 1.3
+Create modals in minutes. Add your favorite shortcodes for contact forms, social media, videos and other multimedia or your own content.
 == Description ==
-This plugin allows you to easily add unlimited Modal windows with just about any content. It accepts shortcodes and has been tested to work with Contact Form 7 custom forms using ajax submission.
+Create modals in minutes. Add your favorite shortcodes for contact forms, social media, videos and other multimedia or your own content. Open them from anywhere including menus, sidebars, templates and anywhere else you can add css classes.
  
 = Core Features =
 * Unlimited Customizable Modals
+* Modal Shortcodes
 * Visual Theme Editor
 * Responsive or Custom Width Modals
 * 19 Customizable Animations
@@ -22,7 +22,6 @@ This plugin allows you to easily add unlimited Modal windows with just about any
 * Load modals on every page or just certain pages.
 * Quickly add modals to any highlighted text in editor.
 * Allows custom JS functions to open & close modals.
-
 = Pro Features =
 * Premium Support*
 * Unlimited Themes
@@ -36,14 +35,9 @@ This plugin allows you to easily add unlimited Modal windows with just about any
 * Premium User Support Forum
 * Expedited Feature Requests
 * Setup Assistance
-
-
 If you like the plugin please rate it.
-
-[Easy Modal Page](http://easy-modal.com "Easy Modal Page - Info, Demo and Discussion") - Info, Demo and Feature Discussion
-
+[Easy Modal Page](https://easy-modal.com "Easy Modal Page - Info, Demo and Discussion") - Info, Demo and Feature Discussion
 [Wizard Internet Solutions](http://wizardinternetsolutions.com "Website Design & Development") - Developers Site
-
 To be notified of plugin updates, [follow us on Twitter](http://twitter.com/EasyModal "Wizard Internet Solutions on Twitter")!
 
 == Installation ==
@@ -53,18 +47,31 @@ To be notified of plugin updates, [follow us on Twitter](http://twitter.com/Easy
 4. Customize the theme to match your website on the theme settings page.
 5. Copy and Add ``eModal-#` class from the modals settings page to the object you want to make activate the modal window. Will work on divs, links, list elements and just about anything else.
 
+
+
 == Changelog ==
+= v1.3 =
+* Bug
+ * [EM-5] - Modal is offcenter on mobile screens
+ * [EM-6] - Fatal error: easy-modal-pro.php:122
+ * [EM-7] - Modal title styles not applied
+ * [EM-8] - Registration modal not working properly.
+ * [EM-19] - GF Form detection and auto load scripts.
+* Improvement
+ * [EM-4] - Added Shortcodes
+ * [EM-48] - Add modal display setting on modal list. Sitewide etc.
+ * [EM-52] - Move jquery animate color script to its own file and enqueue.
+
+= v1.2.5 =
+* Several changes to the pro version and import from older versions.
 = v1.2.2 =
 * Added filter to add meta boxes and em options to custom post types.
-
 = v1.2.1 =
 * Fixes compatibility issues with Ultimate TinyMCE Plugin.
 * Added plugin update notes to plugin page when updates are available.
-
 = v1.2.0.9 =
 * Fixed CSS z-index issues ( set modal z-index to 999, and overlay to 998 to make sure they are above other elements )
 * Fixed an issue with upgrading from previous versions.
-
 = v1.2.0.4 =
 * Fixed data migration issue ( wasn't setting sites to sitewide )
 * Added filters for modal content. Use add_filter('em_modal_content', 'your_custom_function'); function your_custom_function($content);
@@ -115,7 +122,6 @@ To be notified of plugin updates, [follow us on Twitter](http://twitter.com/Easy
 * Added Height & Width options.
 = v0.9 =
 * Initial Release
-
 == Upgrade Notice ==
 = v1.2.1 = 
 * Fixes compatibility issues with Ultimate TinyMCE Plugin.
@@ -125,3 +131,7 @@ To be notified of plugin updates, [follow us on Twitter](http://twitter.com/Easy
 * Options will be overwritten with default options.
 = 0.9 =
 * Initial Release
+
+== Upgrade Notice ==
+= 1.3 =
+Added modal shortcode, full plugin support for gravity forms. A few minor code, updated readme.txt file.

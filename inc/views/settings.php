@@ -34,10 +34,10 @@
 									<tbody>
 										<tr class="form-field form-required">
 											<th scope="row">
-												<label for="name"><?php _e('License Key', 'easy-modal');?> <span class="description">(required)</span></label>
+												<label for="name"><?php _e('License Key', 'easy-modal');?></label>
 											</th>
 											<td>
-												<input <?php echo $valid ? 'style="background-color:#0f0;border-color:#090;"' : '' ?> type="text" id="license" name="license" value="<?php esc_attr_e(get_option('EasyModal_License'))?>"/>
+												<input <?php echo $valid ? 'style="background-color:#0f0;border-color:#090;"' : '' ?> type="password" id="license" name="license" value="<?php esc_attr_e(get_option('EasyModal_License'))?>"/>
 												<p class="description"><?php _e( is_array($license_status) && !empty($license_status['message']) ? $license_status['message'] : 'Enter a key to unlock Easy Modal Pro.','easy-modal')?></p>
 											</td>
 										</tr>

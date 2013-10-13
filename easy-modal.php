@@ -4,23 +4,22 @@ Plugin Name: Easy Modal
 Plugin URI: https://easy-modal.com
 Description: Easily create & style modals with any content. Theme editor to quickly style your modals. Add forms, social media boxes, videos & more. 
 Author: Wizard Internet Solutions
-Version: 1.2.2
+Version: 1.3
 Author URI: http://wizardinternetsolutions.com
 */
 if (!defined('EASYMODAL'))
     define('EASYMODAL', 'Easy Modal');
-
 if (!defined('EASYMODAL_SLUG'))
     define('EASYMODAL_SLUG', trim(dirname(plugin_basename(__FILE__)), '/'));
-
 if (!defined('EASYMODAL_DIR'))
     define('EASYMODAL_DIR', WP_PLUGIN_DIR . '/' . EASYMODAL_SLUG);
-
 if (!defined('EASYMODAL_URL'))
-    define('EASYMODAL_URL', WP_PLUGIN_URL . '/' . EASYMODAL_SLUG);
-
+    define('EASYMODAL_URL', plugins_url() . '/' . EASYMODAL_SLUG);
 if (!defined('EASYMODAL_VERSION'))
-    define('EASYMODAL_VERSION', '1.2.2' );
+    define('EASYMODAL_VERSION', '1.3' );
+
+include '/inc/classes/gravityforms.php';
+include '/inc/classes/shortcodes.php';
 
 class Easy_Modal {
 	protected $api_url = 'http://easy-modal.com/api';
@@ -29,7 +28,7 @@ class Easy_Modal {
 	{
 		if (is_admin())
 		{
-			add_action('admin_init', array(&$this,'_migrate'),1);
+			//add_action('admin_init', array(&$this,'_migrate'),1);
 			add_action('admin_init', array(&$this,'_messages'),10);
 			
 			add_action('admin_init', array(&$this,'process_get'),9);
@@ -38,7 +37,7 @@ class Easy_Modal {
 			{
 				add_action('init', array(&$this,'process_post'),9);
 			}
-            register_activation_hook(__FILE__, array(&$this, '_migrate'));
+			register_activation_hook(__FILE__, array(&$this, '_migrate'));
 			add_action('admin_menu', array(&$this, '_menus') );
 			if(isset($_GET['pages']) && $_GET['pages'] == 'easy-modal')
 			{
@@ -69,16 +68,20 @@ class Easy_Modal {
 			add_filter( 'em_modal_content', 'wpautop' );
 			add_filter( 'em_modal_content', 'shortcode_unautop' );
 			add_filter( 'em_modal_content', 'prepend_attachment' );
+			add_filter( 'em_modal_content', array(&$this,'filters'), 10, 1);
 			add_filter( 'em_modal_content', 'do_shortcode', 11 );
-			add_filter( 'em_modal_content', array(&$this,'filters'), 100, 1);
-			add_action('wp_footer', array(&$this, 'preload_modals'),1000);
+		
+			add_filter('em_preload_modals_single', array(&$this,'preload_modal_filter'),1000);
+
+			add_action('wp_head', array(&$this, 'preload_modals'),1);
+			add_action('wp_footer', array(&$this, 'print_modals'),1000);
 		}
 		$this->_styles_scripts();
 
-		add_action( "in_plugin_update_message-".EASYMODAL_SLUG .'/'. EASYMODAL_SLUG .'.php', array(&$this,'your_update_message_cb'), 20, 2 );
+		//add_action( "in_plugin_update_message-".EASYMODAL_SLUG .'/'. EASYMODAL_SLUG .'.php', array(&$this,'your_update_message_cb'), 20, 2 );
 		// License Check & Updates
 		$all_options = wp_load_alloptions();
-		if(array_key_exists('EasyModal_License_Status', $all_options) && $license_status = get_option('EasyModal_License_Status'))
+		if(array_key_exists('EasyModal_License', $all_options) && array_key_exists('EasyModal_License_Status', $all_options) && $license_status = get_option('EasyModal_License_Status'))
 		{
 			if(is_array($license_status) && in_array($license_status['status'], array(2000,2001,3002,3003)))
 			{
@@ -113,14 +116,12 @@ class Easy_Modal {
 	}
 	public function save_easy_modal_post_modals( $post_id, $post )
 	{
-
 		/* Verify the nonce before proceeding. */
 		if ( !isset( $_POST['safe_csrf_nonce_easy_modal'] ) || !wp_verify_nonce( $_POST['safe_csrf_nonce_easy_modal'],  "safe_csrf_nonce_easy_modal" ) )
 			return $post_id;
 		$post_type = get_post_type_object( $post->post_type );
 		if ( !current_user_can( $post_type->cap->edit_post, $post_id ) )
 			return $post_id;
-
 		$post_modals = ( !empty( $_POST['easy_modal_post_modals']) && $this->all_numeric($_POST['easy_modal_post_modals']) ) ? $_POST['easy_modal_post_modals'] : array() ;
 		$current_post_modals = get_post_meta( $post_id, 'easy_modal_post_modals', true );
 		if ( $post_modals && '' == $current_post_modals )
@@ -135,14 +136,7 @@ class Easy_Modal {
 		$post_types = apply_filters('em_post_types', array('post','page'));
 		foreach($post_types as $post_types)
 		{
-			add_meta_box(
-				'easy-modal',			// Unique ID
-				esc_html__( 'Easy Modal', 'easy-modal' ),		// Title
-				array(&$this,'easy_modal_post_modals'),		// Callback function
-				$post_types				// Admin page (or post type)
-				//'side',					// Context
-				//'default'					// Priority
-			);
+			add_meta_box('easy-modal', esc_html__( 'Easy Modal', 'easy-modal' ), array(&$this,'easy_modal_post_modals'), $post_types);
 		}
 	}
 	public function editor_admin_head()
@@ -186,7 +180,7 @@ class Easy_Modal {
 					$modal['sitewide'] = !empty($modal['sitewide']) ? $modal['sitewide'] : true;	
 					$modal['overlayClose'] = !empty($modal['overlayClose']) && ($modal['overlayClose'] == 'true' || $modal['overlayClose'] == true) ? true : false;	
 					$modal['overlayEscClose'] = !empty($modal['overlayEscClose']) && ($modal['overlayEscClose'] == 'true' || $modal['overlayEscClose'] == true) ? true : false;	
-					$this->updateModalSettings($key, $modal);
+					$this->updateModalSettings($key, $modal, false, true);
 				}
 			}
 		}
@@ -223,11 +217,11 @@ class Easy_Modal {
 				$Modal = unserialize($Modal);
 			}
 			$Modal['name'] = $Modal['title'];
-			$this->updateModalSettings('new',$Modal);
-			delete_option('EasyModal_'.$id);
+			$this->updateModalSettings('new',$Modal, false, true);
+			//delete_option('EasyModal_'.$id);
 		}
-		delete_option('eM_version');
-		delete_option('EasyModal');
+		//delete_option('eM_version');
+		//delete_option('EasyModal');
 	}
 	protected function _migrate_EM_Lite()
 	{
@@ -244,26 +238,32 @@ class Easy_Modal {
 			{
 				$Modal = unserialize($Modal);
 			}
-			$this->updateModalSettings('new',$Modal);
-			delete_option('EasyModalLite_Modal-'.$id);
+			$Modal['name'] = !empty($Modal['title']) ? $Modal['title'] : 'change_me';
+			$this->updateModalSettings($id, $Modal, false, true);
+			//delete_option('EasyModalLite_Modal-'.$id);
 		}
 		$Theme = get_option('EasyModalLite_Theme-1');
 		if(!is_array($Theme))
 		{
 			$Theme = unserialize($Theme);
 		}
-		$this->updateThemeSettings(1,$Theme);
-		delete_option('EasyModalLite_Theme-1');
+		$this->updateThemeSettings(1,$Theme,false,true);
+		//delete_option('EasyModalLite_Theme-1');
 		$o_settings = get_option('EasyModalLite_Settings');
 		if(!is_array($o_settings))
 		{
 			$o_settings = unserialize($o_settings);
+			if(!is_array($o_settings))
+			{
+				$o_settings = array();
+			}
 		}
-		$this->updateSettings($o_settings);
-		delete_option('EasyModalLite_Settings');
-		delete_option('EasyModalLite_Version');
-		delete_option('EasyModalLite_ModalList');
-		delete_option('EasyModalLite_ThemeList');
+		unset($o_settings['license']);
+		$this->updateSettings($o_settings,true);
+		//delete_option('EasyModalLite_Settings');
+		//delete_option('EasyModalLite_Version');
+		//delete_option('EasyModalLite_ModalList');
+		//delete_option('EasyModalLite_ThemeList');
 	}
 	protected function _migrate_EM_Pro()
 	{
@@ -280,14 +280,12 @@ class Easy_Modal {
 			{
 				$Theme = unserialize($Theme);
 			}
-			$theme = $this->updateThemeSettings('new',$Theme);
-			delete_option('EasyModalPro_Theme-'.$id);
+			$theme = $this->updateThemeSettings('new',$Theme,false,true);
+			//delete_option('EasyModalPro_Theme-'.$id);
 			$themes[$id] = $theme['theme_id'];
 		}
-		delete_option('EasyModalPro_ThemeList');
-
+		//delete_option('EasyModalPro_ThemeList');
 		$themes = $this->getThemeList();
-
 		$o_modal_list = get_option('EasyModalPro_ModalList');
 		if(!is_array($o_modal_list))
 		{
@@ -301,21 +299,27 @@ class Easy_Modal {
 				$Modal = unserialize($Modal);
 			}
 			$Modal['theme'] = isset($themes[$id]) ? $theme[$id] : 1;
-			$this->updateModalSettings('new',$Modal);
-			delete_option('EasyModalPro_Modal-'.$id);
+			$Modal['name'] = !empty($Modal['title']) ? $Modal['title'] : 'change_me';
+			$this->updateModalSettings($id, $Modal, false, true);
+			//delete_option('EasyModalPro_Modal-'.$id);
 		}
-		delete_option('EasyModalPro_ModalList');
-
+		//delete_option('EasyModalPro_ModalList');
 		$o_settings = get_option('EasyModalPro_Settings');
 		if(!is_array($o_settings))
 		{
 			$o_settings = unserialize($o_settings);
+			if(!is_array($o_settings))
+			{
+				$o_settings = array();
+			}
 		}
-		$o_settings['license'] = get_option('EasyModalPro_License');
-		delete_option('EasyModalPro_License');
-		delete_option('EasyModalPro_Settings');
-		delete_option('EasyModalPro_Version');
-		$this->updateSettings($o_settings);
+		$license = get_option('EasyModalPro_License');
+		$this->process_license($license);
+		unset($o_settings['license']);
+		$this->updateSettings($o_settings,true);
+		//delete_option('EasyModalPro_License');
+		//delete_option('EasyModalPro_Settings');
+		//delete_option('EasyModalPro_Version');
 	}
 	public function resetOptions()
 	{
@@ -340,7 +344,8 @@ class Easy_Modal {
 	}
 	public function scripts()
 	{
-		wp_enqueue_script(EASYMODAL_SLUG.'-scripts', EASYMODAL_URL.'/inc/js/easy-modal.min.js', array('jquery'));
+		wp_enqueue_script('animate-colors', EASYMODAL_URL.'/inc/js/jquery.animate-colors-min.js', array('jquery'));
+		wp_enqueue_script(EASYMODAL_SLUG.'-scripts', EASYMODAL_URL.'/inc/js/easy-modal.min.js', array('jquery','animate-colors'));
 		$data = array(
 			'modals' => $this->enqueue_modals(),
 			'themes' => $this->enqueue_themes()
@@ -350,14 +355,12 @@ class Easy_Modal {
 		);
 		wp_localize_script( EASYMODAL_SLUG.'-scripts', 'easymodal', $params );
 	}
-
 	public function admin_styles()
 	{
 		$this->styles();
 		wp_register_style(EASYMODAL_SLUG.'-admin-styles',EASYMODAL_URL.'/inc/css/easy-modal-admin.min.css',false,0.1);
 		wp_enqueue_style(EASYMODAL_SLUG.'-admin-styles');
 	}
-
 	public function admin_scripts()
 	{
 		wp_enqueue_script('word-count');
@@ -370,7 +373,6 @@ class Easy_Modal {
 		wp_enqueue_script('jquery-colorpicker', EASYMODAL_URL.'/inc/js/colorpicker.min.js',  array('jquery'));
 		wp_enqueue_script('easy-modal-admin', EASYMODAL_URL.'/inc/js/easy-modal-admin.min.js',  array('jquery', 'jquery-ui-core', 'jquery-ui-slider', 'jquery-colorpicker'));
 		add_action('admin_print_footer_scripts', array(&$this,'admin_footer'),1000);
-
 	}
 	public function _menus()
 	{
@@ -412,7 +414,7 @@ class Easy_Modal {
 		$initArray['style_formats'] = json_encode($styles);     
 		return $initArray;
 	}
-	private $_accepted_modal_ids = array('new');
+	protected $_accepted_modal_ids = array('new');
 	protected $views = array(
 		'admin_footer'		=> '/inc/views/admin_footer.php',
 		'help'				=> '/inc/views/help.php',
@@ -429,7 +431,6 @@ class Easy_Modal {
 	{
 		if($view) return EASYMODAL_DIR.$this->views[$view];
 	}
-
 	public function settings_page()
 	{
 		require $this->load_view('settings');
@@ -493,7 +494,6 @@ class Easy_Modal {
 	{
 		require $this->load_view('help');
 	}
-
 	public function getModalList()
 	{
 		return get_option('EasyModal_ModalList',array());
@@ -554,16 +554,16 @@ class Easy_Modal {
 			}
 			update_option('EasyModal_License_Status', $license_status);
 			update_option('EasyModal_License_LastChecked', strtotime(date("Y-m-d H:i:s")));
-			return true;
+			return 1;
 		}
 		elseif(empty($key))
 		{
 			delete_option('EasyModal_License');
 			delete_option('EasyModal_License_Status');
 			delete_option('EasyModal_License_LastChecked');
-			return true;
+			return 2;
 		}
-		return false;
+		return 0;
 	}
 	public function process_post()
 	{
@@ -582,7 +582,19 @@ class Easy_Modal {
 			}
 		}
 	}
-	public function updateSettings($post = NULL)
+	public function upgrade()
+	{
+		include ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+		include_once( ABSPATH . 'wp-admin/includes/update.php' );
+		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		include_once( ABSPATH . 'wp-admin/includes/file.php' );
+
+		include '/inc/classes/updater_skin.php';
+		$skin = new EM_Updater_Skin();
+		$upgrader = new Plugin_Upgrader( $skin );
+		return $upgrader->bulk_upgrade( array('easy-modal/easy-modal.php') );
+	}
+	public function updateSettings($post = NULL, $silent = false)
 	{
 		$settings = $this->getSettings();
 		if($post)
@@ -591,17 +603,18 @@ class Easy_Modal {
 			$this->message('Settings Updated');
 			if(array_key_exists('license',$post))
 			{
-				if($this->process_license($post['license']))
+				if($this->process_license($post['license']) == 1)
 				{
-					wp_redirect('admin.php?page='.EASYMODAL_SLUG.'-settings',302);
+					wp_redirect('update-core.php',302);
+					//wp_redirect('admin.php?page='.EASYMODAL_SLUG.'-settings',302);
 					exit;
 				}
 			}
-			$this->message('Settings Updated');
+			if(!$silent) $this->message('Settings Updated');
 		}
 		return $settings;
 	}
-	public function updateModalSettings($modal_id, $post = NULL, $redirect = false)
+	public function updateModalSettings($modal_id, $post = NULL, $redirect = false, $silent = false)
 	{
 		$modals = $this->getModalList();
 		if(!is_numeric($modal_id))
@@ -679,7 +692,7 @@ class Easy_Modal {
 						break;
 				}
 			}
-			isset($clone) ? $this->message('Modal cloned successfully') : $this->message('Modal Updated Successfully');
+			if(!$silent) isset($clone) ? $this->message('Modal cloned successfully') : $this->message('Modal Updated Successfully');
 		}
 		$modals[$settings['id']] = $settings['name'];
 		update_option('EasyModal_ModalList', $modals);
@@ -687,7 +700,7 @@ class Easy_Modal {
 		if($redirect) wp_redirect('admin.php?page='.EASYMODAL_SLUG.'&modal_id='.$settings['id'],302);
 		return $settings;
 	}
-	public function updateThemeSettings($theme_id = 1, $post = NULL, $redirect = false)
+	public function updateThemeSettings($theme_id = 1, $post = NULL, $redirect = false, $silent = false)
 	{
 		$settings = $this->getThemeSettings(1);
 		if($post)
@@ -752,13 +765,12 @@ class Easy_Modal {
 						break;
 				}
 			}
-			$this->message('Theme Updated');
+			if(!$silent) $this->message('Theme Updated');
 		}
 		update_option('EasyModal_ThemeList', array(1 => $settings['name']));
 		update_option('EasyModal_Theme-1', $settings);
 		return $settings;
 	}
-
 	public function defaultSettings()
 	{
 		return array();
@@ -801,7 +813,6 @@ class Easy_Modal {
 			'containerBorderStyle' => 'solid',
 			'containerBorderWidth' => '1',
 			'containerBorderRadius' => '8',
-
 			'closeLocation' => 'inside',
 			'closeBgColor' => '#000000',
 			'closeFontColor' => '#F0532B',
@@ -839,49 +850,46 @@ class Easy_Modal {
 	}
 	public function enqueue_modals()
 	{
+		return $this->preload_modals();
+	}
+	public function preload_modal_filter($modal)
+	{
 		$load_modals = $this->loadModals();
-		$modals = array();
-		foreach($this->getModalList() as $id => $name)
+		if($modal['sitewide'] == true)
 		{
-			$modal = $this->getModalSettings($id);
-			$return = false;
-			if($modal['sitewide'] == true)
-			{
-				$return = true;
-			}
-			elseif(in_array($id,$load_modals))
-			{
-				$return = true;	
-			}
-			if($return) $modals[$id] = $modal;
-
-		}		
-		return $modals;
+			return $modal;
+		}
+		elseif(in_array($modal['id'],$load_modals))
+		{
+			return $modal;
+		}
+		return false;
 	}
 	public function preload_modals()
 	{
-		$load_modals = $this->loadModals();
-		$modals = array();
-		foreach($this->getModalList() as $id => $name)
+		if(empty($this->preloaded_modals))
 		{
-			$modal = $this->getModalSettings($id);
-			$return = false;
-			if($modal['sitewide'] == true)
+			$modals = array();
+			foreach($this->getModalList() as $id => $name)
 			{
-				$return = true;
-			}
-			elseif(in_array($id,$load_modals))
-			{
-				$return = true;	
-			}
-			if($return) require(EASYMODAL_DIR.'/inc/views/modal.php');
+				$modal = apply_filters('em_preload_modals_single', $this->getModalSettings($id));
+				if($modal) $modals[$id] = $modal;
+			}		
+			$this->preloaded_modals = $modals;	
+		}
+		return $this->preloaded_modals;
+	}
+	public function print_modals()
+	{
+		foreach($this->preload_modals() as $id => $modal)
+		{
+			require(EASYMODAL_DIR.'/inc/views/modal.php');
 		}
 	}
 	public function enqueue_themes()
 	{
 		return array(1 => $this->getThemeSettings(1));
 	}
-
 	public function message($message,$type = 'updated')
 	{
 		if ( !session_id() )
@@ -972,6 +980,10 @@ class Easy_Modal {
 		}
 		return;
 	}
+
+
+
+
 	public function prepare_request($action, $args = array())
 	{
 		global $wp_version;
@@ -1009,6 +1021,7 @@ class Easy_Modal {
 		if (!is_wp_error($request) && ($request['response']['code'] == 200))
 		{
 			$response = unserialize($request['body']);
+
 		}
 		if (!empty($response) && is_object($response) && strpos($response->version,'p') !== false) // Feed the update data into WP updater
 		{
@@ -1028,6 +1041,7 @@ class Easy_Modal {
 	{
 		$request_string = $this->prepare_request($action, $args);
 		$request = wp_remote_post($this->api_url, $request_string);
+
 		if (is_wp_error($request))
 		{
 			$response = new WP_Error('plugins_api_failed', __('An Unexpected HTTP Error occurred during the API request.</p> <p><a href="?" onclick="document.location.reload(); return false;">Try again</a>'), $request->get_error_message());
@@ -1056,7 +1070,6 @@ if(!isset($EM))
 {
 	$EM = new Easy_Modal;
 }
-
 add_action('admin_init', 'easymodal_disable_older_versions', 1 );
 function easymodal_disable_older_versions()
 {
