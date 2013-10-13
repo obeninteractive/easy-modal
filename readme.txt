@@ -6,7 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: modal,modal box,modal form,modal window,popup,popup box,popup form,popup window,ajax forms
 Requires at least: 3.2
 Tested up to: 3.6
-Stable tag: 1.3
+Stable tag: 1.3.0.1
 Create modals in minutes. Add your favorite shortcodes for contact forms, social media, videos and other multimedia or your own content.
 == Description ==
 Create modals in minutes. Add your favorite shortcodes for contact forms, social media, videos and other multimedia or your own content. Open them from anywhere including menus, sidebars, templates and anywhere else you can add css classes.
@@ -35,9 +35,13 @@ Create modals in minutes. Add your favorite shortcodes for contact forms, social
 * Premium User Support Forum
 * Expedited Feature Requests
 * Setup Assistance
+
 If you like the plugin please rate it.
+
 [Easy Modal Page](https://easy-modal.com "Easy Modal Page - Info, Demo and Discussion") - Info, Demo and Feature Discussion
+
 [Wizard Internet Solutions](http://wizardinternetsolutions.com "Website Design & Development") - Developers Site
+
 To be notified of plugin updates, [follow us on Twitter](http://twitter.com/EasyModal "Wizard Internet Solutions on Twitter")!
 
 == Installation ==
@@ -50,6 +54,10 @@ To be notified of plugin updates, [follow us on Twitter](http://twitter.com/Easy
 
 
 == Changelog ==
+= v1.3.0.1 =
+* Bug
+ * [EM-63] - Path issue for gravityforms.php and shortcodes.php
+
 = v1.3 =
 * Bug
  * [EM-5] - Modal is offcenter on mobile screens

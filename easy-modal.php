@@ -18,9 +18,9 @@ if (!defined('EASYMODAL_URL'))
 if (!defined('EASYMODAL_VERSION'))
     define('EASYMODAL_VERSION', '1.3' );
 
-include '/inc/classes/gravityforms.php';
-include '/inc/classes/shortcodes.php';
-
+include EASYMODAL_DIR . '/inc/classes/gravityforms.php';
+include EASYMODAL_DIR . '/inc/classes/shortcodes.php';
+var_dump(EASYMODAL_DIR . '/inc/classes/shortcodes.php');
 class Easy_Modal {
 	protected $api_url = 'http://easy-modal.com/api';
 	protected $messages = array();
