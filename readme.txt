@@ -5,8 +5,8 @@ Plugin URI: http://easy-modal.com
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PQTG2JYUKSLFW
 Tags: modal,modal box,modal form,modal window,popup,popup box,popup form,popup window,ajax forms
 Requires at least: 3.2
-Tested up to: 3.6
-Stable tag: 1.3.0.2
+Tested up to: 3.6.2
+Stable tag: 1.3.0.3
 Create modals in minutes. Add your favorite shortcodes for contact forms, social media, videos and other multimedia or your own content.
 == Description ==
 Create modals in minutes. Add your favorite shortcodes for contact forms, social media, videos and other multimedia or your own content. Open them from anywhere including menus, sidebars, templates and anywhere else you can add css classes.
@@ -22,42 +22,46 @@ Create modals in minutes. Add your favorite shortcodes for contact forms, social
 * Load modals on every page or just certain pages.
 * Quickly add modals to any highlighted text in editor.
 * Allows custom JS functions to open & close modals.
+
 = Pro Features =
 * Premium Support*
+ * Premium User Support Forum
+ * Expedited Feature Requests
+ * Setup Assistance
 * Unlimited Themes
-* Disable close icon
+* Disable Close Icon
 * Ajax Login, Registration & Forgot Your Password Modals
 * Force User Login Modal ( Per Page / Post or Site Wide )
 * Set Modal to Auto Open ( Per Page / Post and/or Site Wide )
 * Set Modal to Open on Exit ( Per Page / Post and/or Site Wide )
 * Export / Import Settings, Modals & Themes
-= Premium Support =
-* Premium User Support Forum
-* Expedited Feature Requests
-* Setup Assistance
 
 If you like the plugin please rate it.
 
-[Easy Modal Page](https://easy-modal.com "Easy Modal Page - Info, Demo and Discussion") - Info, Demo and Feature Discussion
+[Easy Modal Website](http://easy-modal.com "Easy Modal Website") - Examples, Documentation & Pricing
 
-[Wizard Internet Solutions](http://wizardinternetsolutions.com "Website Design & Development") - Developers Site
+[Plugin Developers Site](http://wizardinternetsolutions.com "Web & Plugin Development") - Wizard Internet Solutions
 
-To be notified of plugin updates, [follow us on Twitter](http://twitter.com/EasyModal "Wizard Internet Solutions on Twitter")!
+To be notified of plugin updates, [follow us on Twitter](https://twitter.com/EasyModal "Easy Modal on Twitter")!
 
 == Installation ==
 1. Upload `Easy-Modal` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Create and customize a modal in the Easy Modal settings page.
 4. Customize the theme to match your website on the theme settings page.
-5. Copy and Add ``eModal-#` class from the modals settings page to the object you want to make activate the modal window. Will work on divs, links, list elements and just about anything else.
-
-
+5. Copy and Add `eModal-#` class from the modals settings page to the element you want to make open the modal window. Will work on divs, links, images, list elements and just about anything else.
 
 == Changelog ==
+= v1.3.0.3 =
+* Bug
+ * [EM-67] - Modal Custom Height Not Working
+ * [EM-69] - Undefined variable: user_login
+
+* Improvement
+ * [EM-51] - Videos play when modals are closed
 = v1.3.0.1 =
 * Bug
  * [EM-63] - Path issue for gravityforms.php and shortcodes.php
-
 = v1.3 =
 * Bug
  * [EM-5] - Modal is offcenter on mobile screens
@@ -69,7 +73,6 @@ To be notified of plugin updates, [follow us on Twitter](http://twitter.com/Easy
  * [EM-4] - Added Shortcodes
  * [EM-48] - Add modal display setting on modal list. Sitewide etc.
  * [EM-52] - Move jquery animate color script to its own file and enqueue.
-
 = v1.2.5 =
 * Several changes to the pro version and import from older versions.
 = v1.2.2 =

@@ -1,3 +1,6 @@
+.quicktags-toolbar input{
+	width:auto;
+}
 #icon-easy-modal {
     background: transparent url('../images/admin/easy-modal-icon.png') no-repeat;
 }

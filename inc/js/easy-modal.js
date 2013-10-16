@@ -21,10 +21,18 @@
 
 			var $this = $(this);
 
-            var opts = $this.data('emodal');
+			var opts = $this.data('emodal');
             $this.removeClass('active').fadeOut(options.speed,function(){
                 if(options.overlay)
 					$('#modal-overlay').fadeOut(options.speed,function(){
+						var vids = $('iframe',$this).filter('[src*="youtube"],[src*="vimeo"]');
+						if (vids.length > 0 )
+						{
+							vids.each(function(){
+								var src = $(this).attr('src');
+								$(this).attr('src', '').attr('src', src);
+							})
+						}
 						options.onClose();
 					});
             })
@@ -59,7 +67,7 @@
 			$this.addClass('active');
 			// Modal Clos Button
 			
-			if(!opts.closedisabled && $('.close-modal',$this).length)
+			if(!opts.closeDisabled && $('.close-modal',$this).length)
 			{
 				$('.close-modal',$this)
 					.unbind('click')
@@ -70,14 +78,14 @@
 				.unbind('click')
 				.click(function()
 				{
-					if (opts.overlayclose == true)
+					if (opts.overlayClose == true)
 					{
 						$this.emodal('close');
 					}
 				})
 				.themeOverlay(opts);
 				
-			if(opts.escclose == true)
+			if(opts.overlayClose == true)
 			{
 				$(window).bind('keyup.emodal',function(e){
 					if($('.modal.active').length && e.keyCode == 27)
@@ -232,9 +240,9 @@
 							content.css({maxHeight: (opts.maxHeight - 60) + 'px'});
 						}
 						
-						if(opts.userheight > 0)
+						if(opts.userHeight > 0)
 						{
-							content.css({height: opts.userheight + 'px'});
+							content.css({height: opts.userHeight + 'px'});
 						}
 						
 						if(opts.userMaxWidth > 0)
@@ -242,9 +250,9 @@
 							content.css({maxWidth: $(window).width() * (opts.userMaxWidth / 100) + 'px'});
 						}
 						
-						if(opts.userwidth > 0)
+						if(opts.userWidth > 0)
 						{
-							content.css({width: opts.userwidth + 'px'});
+							content.css({width: opts.userWidth + 'px'});
 						}
                         var title = content
 							.find("#eModal-Title")
@@ -306,13 +314,12 @@
 		{
 			var theme = themes[opts.theme];
 		}
-		console.log(theme);
 		if(opts.size == 'custom')
 		{
 			$this.css({
-				'height': opts.userheight ? opts.userheight + opts.userheightunit : $this.css('height'),
-				'width': opts.userwidth ? opts.userwidth + opts.userwidthunit : $this.css('width'),
-				'margin-left': opts.userwidth ? -(opts.userwidth / 2) + opts.userwidthunit : $this.css('margin-left')
+				'height': opts.userHeight ? opts.userHeight + opts.userHeightUnit : $this.css('height'),
+				'width': opts.userWidth ? opts.userWidth + opts.userWidthUnit : $this.css('width'),
+				'margin-left': opts.userWidth ? -(opts.userWidth / 2) + opts.userWidthUnit : $this.css('margin-left')
 			});
 		}
 		$this
@@ -604,14 +611,14 @@
         onLoad: function (){},
         onClose: function (){},
         type: null,
-		userheight: null,
-		userwidth: null,
+		userHeight: null,
+		userWidth: null,
 		animation: 'fadeAndSlide',
 		direction: 'bottom',
 		duration: 350,
-        overlayclose: false,
-        escclose: false,
-        closedisabled: false
+        overlayClose: false,
+        escClose: false,
+        closeDisabled: false
     };
     var modals = easymodal.modals;
     var themes = easymodal.themes;

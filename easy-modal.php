@@ -4,7 +4,7 @@ Plugin Name: Easy Modal
 Plugin URI: https://easy-modal.com
 Description: Easily create & style modals with any content. Theme editor to quickly style your modals. Add forms, social media boxes, videos & more. 
 Author: Wizard Internet Solutions
-Version: 1.3.0.2
+Version: 1.3.0.3
 Author URI: http://wizardinternetsolutions.com
 */
 if (!defined('EASYMODAL'))
@@ -16,7 +16,7 @@ if (!defined('EASYMODAL_DIR'))
 if (!defined('EASYMODAL_URL'))
     define('EASYMODAL_URL', plugins_url() . '/' . EASYMODAL_SLUG);
 if (!defined('EASYMODAL_VERSION'))
-    define('EASYMODAL_VERSION', '1.3.0.2' );
+    define('EASYMODAL_VERSION', '1.3.0.3' );
 
 include EASYMODAL_DIR . '/inc/classes/gravityforms.php';
 include EASYMODAL_DIR . '/inc/classes/shortcodes.php';
@@ -880,7 +880,8 @@ class Easy_Modal {
 	}
 	public function print_modals()
 	{
-		foreach($this->preload_modals() as $id => $modal)
+		$modals = is_array($this->preload_modals()) ? $this->preload_modals() : array();
+		foreach($modals as $id => $modal)
 		{
 			require(EASYMODAL_DIR.'/inc/views/modal.php');
 		}

@@ -30,8 +30,8 @@ class EM_Shortcodes
 				"data-size='{$size}' ".
 				($size == 'custom' ? 
 					"style='width:{$width}{$widthUnit};height:{$height}{$heightUnit};margin-left:-".($width/2)."{$widthUnit}' ".
-					"data-userheight='{$height}{$heightUnit}' ".
-					"data-userwidth='{$width}{$widthUnit}' "
+					"data-userHeight='{$height}{$heightUnit}' ".
+					"data-userWidth='{$width}{$widthUnit}' "
 				: "").
 				"data-Animation='{$animation}' ".
 				"data-direction='{$direction}' ".
